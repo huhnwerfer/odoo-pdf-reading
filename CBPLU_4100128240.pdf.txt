@@ -9,8 +9,9 @@ Dr. Jan-Michael Hein
 FAX: 010 49(0)341 333 858 FAX: 81-3-5632-9965 FAX: 81-3-5632-9965
 TEL: 010 49(0)341 333 858 TEL: 81-3-5632-9608 TEL: 81-3-5632-9608
 DATE: 2026/07/27 SHIP VIA: FedEx PAGE: 001 / 001
-Product No.	Product Description	U O M	Quantity	Unit Price	Total
-42-50000-03	PLU pluriStrainer Funnel, pluriStrainer accessories 25pc with the same LOT.	25 PC	1	40.30	40.30 EUR
+Product No. Product Description U O M Quantity Unit Price Total
+42-50000-03 PLU pluriStrainer Funnel, pluriStrainer accessories 25 1 40.30 40.30
+25pc with the same LOT. PC EUR
 43-10030-50 PLU pluriStrainer Mini cell strainer, PET sieve fabric, mesh 50 1 59.50 59.50
 PC EUR
 43-50040-51 PLU pluriStrainer cell strainer 40 MUm mesh size, PET sieve 50 1 45.50 45.50
