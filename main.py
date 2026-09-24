@@ -2,68 +2,49 @@ import pdfplumber
 import sys
 import os
 import re
-from scripts.pdfs import PDFS
+from scripts import *
 
 
-args = sys.argv[1:]
 
-input_dir = "pdfs/"
-txt_dir = "txts/"
-output_dir = "outputs/"
-
-regex_list_cbplu=[]
-
-files = []
-if args == []:
+def no_files_given(input_dir: str) -> list:
+	file_array = []
 	for file in os.listdir(input_dir):
-		files.append(file)
+		file_array.append(file)
 		pass
-	pass
-else:
-	for file in args:
-		print(file)
-		files.append(file.strip(input_dir))
-		pass
-	pass
+
+	return file_array
 
 
-input_files = []
-txt_files = []
-output_files = []
-for file in files:
-	print(file)
-	input_files.append(input_dir + file)
-	txt_files.append(txt_dir + file + ".txt")
-	output_files.append(output_dir + file + ".csv")
-	pass
-print(input_files)
-print(txt_files)
-print(output_files)
-
-#pdf to txt
-for file in range(len(input_files)):
-	print(file)
-	with pdfplumber.open(input_files[file]) as pdf:
-		pages = ""
-		for page in pdf.pages:
-			pages += page.extract_text()
-			pass
-		with open(txt_files[file], "w+") as txt:
-			txt.write(pages)
+def files_given(arg_array) -> tuple[str, list]:
+	# test if files exist and are valid
+	file_array = []
+	input_dir = ""
+	for file in arg_array:
+		if True: # find out if arg is a pdf and if its a valid path
+			# strip pathj to file and store path and file seperatly
+			file_array.append(file)
 			pass
 		pass
+	return input_dir, file_array
+
+
+def main(arg_array):
+	files: list
+	input_dir = "pdfs/"
+	output_dir = "outputs/"
+
+	if arg_array == []:
+		files = no_files_given(input_dir)
+		pass
+	else:
+		input_dir, files = files_given(arg_array)
+		pass
+
+	pdfs = PDFS(files, input_dir, output_dir)
+	pdfs.all_pdfs()
 	pass
 
 
-pdfs = PDFS()
-pdfs.input_files = input_files
-pdfs.txt_files = txt_files
-pdfs.output_files = output_files
-pdfs.all_pdfs()
-
-####################################################### aalll of this for the CBPLU_\d*.pdf
-
-
-
-
-#format_txt_to_csv("CBPLU_4100128240.pdf.txt", "CBPLU_4100128240.csv")
+if __name__ == "__main__":
+	main(sys.argv[1:])
+	pass

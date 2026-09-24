@@ -2,6 +2,8 @@ import re
 
 
 class CBPLU:
+	def __init__(self):
+		pass
 	def delete_lines_untill_Prod_No(line_array, line_array_pos):
 		# while not reading regex match to \d{2}-\d{5}-\d{2}:
 		while line_array_pos < len(line_array) and not re.search("\d{2}-\d{5}-\d{2}", line_array[line_array_pos]):
@@ -50,7 +52,7 @@ class CBPLU:
 			pass
 		return line_array_pos
 
-	def format_txt_to_csv(inputfile, outputfile):
+	def format_array_to_csv(pages: str, path_to_outputfile):
 		# iwas das inputfile zu line_array macht
 		line_array = []
 		with open(inputfile, "r") as f:
@@ -64,7 +66,7 @@ class CBPLU:
 		while line_array_pos < len(line_array):
 			CBPLU.delete_lines_untill_Prod_No(line_array, line_array_pos)
 			line_array_pos = CBPLU.format_lines_untill_Totall(line_array, line_array_pos)
-		with open(outputfile, "w+") as f:
+		with open(path_to_outputfile, "w+") as f:
 			for line in line_array:
 				f.write(line)
 				pass
