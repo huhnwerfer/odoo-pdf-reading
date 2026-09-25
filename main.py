@@ -1,7 +1,5 @@
-import pdfplumber
 import sys
 import os
-import re
 from scripts import *
 
 
