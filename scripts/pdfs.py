@@ -75,10 +75,11 @@ class PDFS:
 		if not csv_array[1:]:
 			print(file_name + " something went wrong in file " + file_name)
 			return False
-		for line in csv_array[1:]:
-			if re.match(r"([\d-]*)\t(.*)\t(\d{1,5})\t(\d+\.\d{0,2})", line):
+		for i in range(1, len(csv_array)):
+			#if re.match(r"([\d-]*)\t(.*)\t(\d{1,5})\t(\d+\.\d{0,2})", line):
+			if re.match(r"(\d{2}-\d{5}(-\d{2}){0,1})\t(.*)\t(\d*)\t(\d*)\t(\d*\.\d*)\t(\d*\.\d*)", csv_array[i]):
 				pass
 			else:
-				print("something went wrong in file " + file_name + " in line " + line)
+				print("something went wrong in file " + file_name + " in line " + str(i+1) + "\nwith the following content:\n"+ csv_array[i])
 				status = False
 		return status
