@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import pdfplumber
+import re
 from .pdf_scripts import * #do not delete, it is being used
 
 class PDFS:
@@ -26,7 +27,7 @@ class PDFS:
 
 	def what_scripts(self):
 		for script in os.listdir(self.path_to_pdf_scripts):
-			if not "init" in script:
+			if not "init" in script and not "pdf" in script:
 				self.scripts.append(Path(script).stem)
 				pass
 			pass
@@ -44,19 +45,40 @@ class PDFS:
 	def which_pdf(self, file_name, line_array):
 		for script in self.scripts:
 			if script.lower() in file_name.lower():
-				instance = globals()[script.upper()]#input the script as upper()
+				instance = globals()[script.upper()]#input the script name as upper() so it matches its own class
 				instantiated = instance(line_array)
 				csv_array = instantiated.format_array_to_csv()
-				with open(self.output_dir + file_name + ".csv", "w+") as f:
-					for line in csv_array:
-						f.write(line)
+				if self.test_csv(csv_array, file_name):
+					with open(self.output_dir + file_name + ".csv", "w+") as f:
+						for line in csv_array:
+							f.write(line)
+							pass
 						pass
 					pass
-				pass
+				else:
+					pass
+					#raise Exception("Some formatting went wrong in file " + file_name)
 				break
 			pass
 		else:
+			print(file_name + " isnt handled yet on its own")
+			with open("txts/" + file_name + ".txt", "w+") as f:
+				for line in line_array:
+					f.write(line + "\n")
 			#raise Exception("No such script")
 			pass
 		return
 
+
+	def test_csv(self, csv_array, file_name) -> bool:
+		status = True
+		if not csv_array[1:]:
+			print(file_name + " something went wrong in file " + file_name)
+			return False
+		for line in csv_array[1:]:
+			if re.match(r"([\d-]*)\t(.*)\t(\d{1,5})\t(\d+\.\d{0,2})", line):
+				pass
+			else:
+				print("something went wrong in file " + file_name + " in line " + line)
+				status = False
+		return status
