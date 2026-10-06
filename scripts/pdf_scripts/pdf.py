@@ -9,43 +9,68 @@ class PDF:
 		pass
 
 
-	def csv_line(self, regex_array) -> str:
+	def __init_subclass__(cls, **kwargs):
+		super().__init_subclass__(**kwargs)
+
+		error_string = ""
+		var = "format_lines_until_pattern"
+		if var not in cls.__dict__:
+			error_string += f"{cls.__name__} muss {var} definieren\n"
+			pass
+
+		var = "delete_lines_until_pattern"
+		if var not in cls.__dict__:
+			error_string += f"{cls.__name__} muss {var} definieren\n"
+			pass
+
+		var = "regex_array"
+		if var not in cls.__dict__:
+			error_string += f"{cls.__name__} muss {var} definieren"
+			pass
+
+		if error_string:
+			raise TypeError(error_string)
+
+
+
+
+	def csv_line(self) -> str:
 		csv_string = ""
-		csv_string += self.prod_no(regex_array) + "\t"
-		csv_string += self.prod_des(regex_array) + "\t"
-		csv_string += self.u_o_m(regex_array) + "\t"
-		csv_string += self.quantity(regex_array) + "\t"
-		csv_string += self.unit_price(regex_array) + "\t"
-		csv_string += self.total(regex_array) + "\t"
+		csv_string += self.prod_no() + "\t"
+		csv_string += self.prod_des() + "\t"
+		csv_string += self.u_o_m() + "\t"
+		csv_string += self.quantity() + "\t"
+		csv_string += self.unit_price() + "\t"
+		csv_string += self.total() + "\t"
 		return csv_string[:-1] + "\n"
 
 
-	def prod_no(self, regex_array) -> str:
+	def prod_no(self) -> str:
 		raise Exception("Function prod_no is not implemented")
 		return ""
 
 
-	def prod_des(self, regex_array) -> str:
+	def prod_des(self) -> str:
 		raise Exception("Function prod_des is not implemented")
 		return ""
 
 
-	def u_o_m(self, regex_array) -> str:
+	def u_o_m(self) -> str:
 		raise Exception("Function u_o_m is not implemented")
 		return ""
 
 
-	def quantity(self, regex_array) -> str:
+	def quantity(self) -> str:
 		raise Exception("Function quantity is not implemented")
 		return ""
 
 
-	def unit_price(self, regex_array) -> str:
+	def unit_price(self) -> str:
 		raise Exception("Function unit_price is not implemented")
 		return ""
 
 
-	def total(self, regex_array) -> str:
+	def total(self) -> str:
 		raise Exception("Function total is not implemented")
 		return ""
 

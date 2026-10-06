@@ -83,7 +83,8 @@ class PDFS:
 			return False
 		for i in range(1, len(csv_array)):
 			#if re.match(r"([\d-]*)\t(.*)\t(\d{1,5})\t(\d+\.\d{0,2})", line):
-			if re.match(r"(\d{2}-\d{5}(-\d{2}){0,1})\t(.*)\t(\d*)\t(\d*)\t(\d*\.\d*)\t(\d*\.\d*)", csv_array[i]):
+			#Product Number" + "\t" + "Product Description" + "\t" + "U O M" + "\t" + "Quantity" + "\t" + "Unit Price" + "\t" + "Total"
+			if re.match(r"(\d{2}-\d{5}(-\d{0,2})?)\t(.+)\t(.*)\t(\d+)\t(.*)\t(.*)", csv_array[i]):
 				pass
 			else:
 				status.append("line " + str(i+1) + ": "+ csv_array[i])
