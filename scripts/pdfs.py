@@ -3,7 +3,7 @@ import os
 import pdfplumber
 import re
 from .pdf_scripts import * #do not delete, it is being used
-
+MAX_ERROR_PER_PDF = 5
 class PDFS:
 	scripts = []
 	path_to_pdf_scripts = "scripts/pdf_scripts"
@@ -48,16 +48,22 @@ class PDFS:
 				instance = globals()[script.upper()]#input the script name as upper() so it matches its own class
 				instantiated = instance(line_array)
 				csv_array = instantiated.format_array_to_csv()
-				if self.test_csv(csv_array, file_name):
-					with open(self.output_dir + file_name + ".csv", "w+") as f:
-						for line in csv_array:
-							f.write(line)
-							pass
-						pass
+				csv_status = self.test_csv(csv_array, file_name)
+				csv_status_str = ""
+				csv_status_str += file_name + " has the following problem lines: \n"
+				for line in csv_status:
+					csv_status_str += line
 					pass
-				else:
-					pass
-					#raise Exception("Some formatting went wrong in file " + file_name)
+				csv_status_str += "\n"
+				errors = len(csv_status)
+				match errors:
+					case 0:
+						self.save_csv_to_file(csv_array, file_name)
+					case _ if errors <= MAX_ERROR_PER_PDF:
+						self.save_csv_to_file(csv_array, file_name)
+						print(csv_status_str)
+					case _:
+						raise Exception("Formatting has more then " + str(MAX_ERROR_PER_PDF) + " errors\n" + csv_status_str)
 				break
 			pass
 		else:
@@ -70,8 +76,8 @@ class PDFS:
 		return
 
 
-	def test_csv(self, csv_array, file_name) -> bool:
-		status = True
+	def test_csv(self, csv_array, file_name) -> list[str]:
+		status: list[str] = []
 		if not csv_array[1:]:
 			print(file_name + " something went wrong in file " + file_name)
 			return False
@@ -80,6 +86,14 @@ class PDFS:
 			if re.match(r"(\d{2}-\d{5}(-\d{2}){0,1})\t(.*)\t(\d*)\t(\d*)\t(\d*\.\d*)\t(\d*\.\d*)", csv_array[i]):
 				pass
 			else:
-				print("something went wrong in file " + file_name + " in line " + str(i+1) + "\nwith the following content:\n"+ csv_array[i])
-				status = False
+				status.append("line " + str(i+1) + ": "+ csv_array[i])
 		return status
+
+
+	def save_csv_to_file(self, csv_array, file_name):
+		with open(self.output_dir + file_name + ".csv", "w+") as f:
+			for line in csv_array:
+				f.write(line)
+				pass
+			pass
+		pass

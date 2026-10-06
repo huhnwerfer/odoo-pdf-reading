@@ -1,0 +1,34 @@
+Indkøbsordre
+Betegnelse: MAJBJN 22.09.2026 08:03
+Indkøbsordrenummer: 3600295931
+Dato: 22.09.2026
+Firma Version: 2
+pluriSelect Life Sciences UG Co. KG Kontaktperson: MAJBRITH DALGAARD
+Deutscher Platz 5c JENSEN
+DE-04103 Leipzig Telefon:
+Email: Majbrith.Jensen@aarhus.rm.dk
+EAN: 5798002749915
+SE Nummer: DK29762929
+Varemodtager:
+AUH_Blodsygdomme Laboratorium
+MAJBRITH DALGAARD JENSEN
+PALLE JUUL-JENSENS BOULEVARD 99, C115
+DK-8200 Aarhus N
+Leveringssted:
+Rhenus logistics - Regionslager Leveringsdato: 25.09.2026
+Rhenus logistics - Regionslager
+Egeskovvej 17A, Port 225-226
+DK-8700 Horsens
+Bestillingstekst:
+Ordre- og leveringsspørgsmål: Aarhus Universitetshospital tlf.: +45 7845 8222 E-mail:
+auh.indkoebsafdeling@rm.dk -Faktureringsspørgsmål og rykkere: E-mail: ( indkoeb.og.medicoteknik.
+faktura.rm.indkoeb@rm.dk ) - Trades in the EU has introduced Article 194 regarding reverse charge. Therefore
+please add our VAT number to the invoice, as well as addthe wording "reverse charge". -
+Pos. Varenr. Betegnelse Lev.-varerenr.
+Leveringsdato/ Mængde Enhed Pris pr. enhed Nettoværdi
+Udførelsesperiode
+1 pluristrainer mini 70um 43-10070-70
+25.09.2026 2 PK 4.460,00 DKK/1 PK 8.920,00 DKK
+Positionslangtekst:
+pluristrainer mini 70um
+Samlet værdi: 8.920,00 DKK

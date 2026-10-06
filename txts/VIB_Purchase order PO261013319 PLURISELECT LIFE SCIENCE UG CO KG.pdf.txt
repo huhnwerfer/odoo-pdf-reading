@@ -1,0 +1,49 @@
+Purchase order
+Page 1 of 2
+VIB VZW To: PLURISELECT LIFE SCIENCE UG CO KG
+Suzanne Tassierstraat 1 DEUTSCHER PLATZ 5C
+9052 Gent 04103 LEIPZIG
+Belgium Germany
+BTW/TVA/VAT: 0456343923
+Purchase order number: PO261013319-1 Our customer number:
+Date: 9/18/2026 Vendor number: S001368
+Line External item Product name Quantity Unit price Discount% Net amount
+10 44-10050-05 plurimate II 50 ml tubes (unfilled) 25 pieces 4.00 54.00 0.00% 216.00
+(Project: 1001391 Group: 1184 Requester: Van Gompel Jan)
+20 60-00092-12 Lympho Spin Medium / PBMC Spin Medium 1bottle 500 ml 4.00 67.00 0.00% 268.00
+(Project: 1001391 Group: 1184 Requester: Van Gompel Jan)
+Total 484.00EUR
+***IMPORTANT NOTICE: In order to assure timely payment of your invoice, we ask you to send invoices either through peppol platform (Peppol ID
+9925:BE0456343923) or in pdf format to invoices@vib.be referencing the correct PO nr. Thanks for your cooperation***
+Ship-to address: Invoice address:
+S05_VIB Nanobody Core VIB VZW
+Pleinlaan 2 - Bio incubator Brussels - Building P unit 6 Suzanne Tassierstraat 1
+1050 Brussel 9052 Gent
+Belgium Belgium
+Contact: Van Gompel Jan
+Tel +32 26291801
+Email nanobodycore.orders@vib.be
+Please note that contrary to your terms, our payment terms are 30 days at the end of the month. Acceptance of our order means that you agree to our payment terms.Purchase order
+Page 2 of 2
+GENERAL TERMS AND CONDITIONS
+1. The goods or services to be supplied shall comply in all respects with the terms and conditions specified on the purchase order. The terms of sale
+specified by the supplier on his order confirmation shall not count if they have not been approved in writing by our company.
+2. RECEPTION
+In the absence of special conditions mentioned on our order form, the acceptance regarding quantity and quality of delivery (goods, packaging, etc.)
+will take place at the delivery address. Should a hidden defect - not visible upon normal acceptance - occur while the goods have already undergone
+any kind of handling, we reserve the right, apart from the free exchange of the goods, to recover all costs we would have incurred due to these goods.
+3. PAYMENT TERM
+a. 30 days after the end of the month of delivery and billing date
+b. Advances are only to pre-finance purchased materials. By paying the advances, our company becomes the owner of those materials. In case of
+breach of contract, advances and or materials are claimable.
+4. PENALTY FOR LATE
+a. We reserve the right in case the partial or total delivery exceeds the agreed delivery time, to charge the damage suffered.
+b. In case of total or partial non-delivery, we reserve the right to place all or part of the order elsewhere at the expense and risk of the defaulting
+supplier, and this after a merely notification to the supplier.
+5. DISPUTES
+In case of disputes, only the Courts of Ghent shall have jurisdiction.
+6. DOCUMENT
+a. A shipping note indicating our order number must be enclosed with your delivery.
+b. Invoices should be sent either via peppol or by PDF to invoices@vib.be with the mentioning the purchase order number.
+7. LEGISLATION
+All your deliveries must comply with all relevant legal requirements.
