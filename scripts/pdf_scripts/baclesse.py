@@ -5,7 +5,7 @@ from .pdf import PDF
 class BACLESSE(PDF):
 	delete_lines_until_pattern = r"(\d*) (.*) (\d{2}-\d{5}-(\{2})?)"
 	format_lines_until_pattern = r"Mode livraison : Total"
-	regex_array = [r"\d* .* (\d{2}-\d{5}-\{0,2}) (.*) \d* (\d*) .* (\d*,\d*) (\d*,\d*)EUR .*", r"(.*)"]
+	regex_array = [r"\d* .* (\d{2}-\d{5}-\d{0,2}) (.*) \d* (\d*) .* (\d*,\d*) (\d*,\d*)EUR .*", r"(.*)"]
 	def format_array_to_csv(self):
 		while self.line_array_pos < len(self.line_array):
 			self.delete_lines_until_()

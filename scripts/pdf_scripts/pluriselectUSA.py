@@ -41,11 +41,11 @@ class PLURISELECTUSA(PDF):
 		return prod_string
 
 
-	def u_o_m(self) -> str:
+	def quantity(self) -> str:
 		return re.sub(self.regex_array[0], r"\3", self.line_array[self.line_array_pos])
 
 
-	def quantity(self) -> str:
+	def u_o_m(self) -> str:
 		return re.sub(self.regex_array[0], r"\4", self.line_array[self.line_array_pos])
 
 
