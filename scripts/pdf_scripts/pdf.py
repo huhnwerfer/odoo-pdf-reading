@@ -56,7 +56,6 @@ class PDF:
 
 
 	def u_o_m(self) -> str:
-		raise Exception("Function u_o_m is not implemented")
 		return ""
 
 
@@ -66,12 +65,10 @@ class PDF:
 
 
 	def unit_price(self) -> str:
-		raise Exception("Function unit_price is not implemented")
 		return ""
 
 
 	def total(self) -> str:
-		raise Exception("Function total is not implemented")
 		return ""
 
 
