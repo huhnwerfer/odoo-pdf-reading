@@ -39,11 +39,10 @@ class CAMBRIDGE(PDF):
 	def prod_des(self) -> str:
 		prod_string = ""
 		prod_string += re.sub(self.regex_array[0], r"\4", self.line_array[self.line_array_pos])
-		counter = 1
-		while not (re.search(self.delete_lines_until_pattern, self.line_array[self.line_array_pos+counter]) or re.search(self.format_lines_until_pattern, self.line_array[self.line_array_pos+counter])):
-			prod_string += " " + re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos+counter])
+		self.line_jumper = 1
+		while not (re.search(self.delete_lines_until_pattern, self.line_array[self.line_array_pos+self.line_jumper]) or re.search(self.format_lines_until_pattern, self.line_array[self.line_array_pos+self.line_jumper])):
+			prod_string += " " + re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos+self.line_jumper])
 			self.line_jumper += 1
-			counter += 1
 		return prod_string
 
 
