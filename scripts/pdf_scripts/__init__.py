@@ -7,3 +7,4 @@ from .cambridge import CAMBRIDGE
 from .centre_hospitalier import CENTRE_HOSPITALIER
 from .cnrs import CNRS
 from .dominique import *
+from .geyer import *
