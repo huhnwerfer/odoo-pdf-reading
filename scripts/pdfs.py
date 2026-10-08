@@ -45,6 +45,10 @@ class PDFS:
 	def which_pdf(self, file_name, line_array):
 		for script in self.scripts:
 			if script.lower() in file_name.lower():
+				with open("txts/" + file_name + ".txt", "w+") as f:
+					for line in line_array:
+						f.write(line + "\n")
+				pass
 				instance = globals()[script.upper()]#input the script name as upper() so it matches its own class
 				instantiated = instance(line_array)
 				csv_array = instantiated.format_array_to_csv()
@@ -68,7 +72,7 @@ class PDFS:
 			pass
 		else:
 			print(file_name + " isnt handled yet on its own")
-			with open("txts/" + file_name + ".txt", "w+") as f:
+			with open("failing_txts/" + file_name + ".txt", "w+") as f:
 				for line in line_array:
 					f.write(line + "\n")
 			#raise Exception("No such script")
