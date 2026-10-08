@@ -54,6 +54,9 @@ class GEYER(PDF):
 
 	def prod_des(self) -> str:
 		prod_string = ""
+		for i in range(2, self.line_jumper):
+			prod_string += " " + re.sub(self.regex_array[2], r"\1", self.line_array[self.line_array_pos+i])
+		return prod_string
 		counter = 2
 		while not (re.search(self.delete_lines_until_pattern, self.line_array[self.line_array_pos+counter]) or re.search(self.format_lines_until_pattern, self.line_array[self.line_array_pos+counter])):
 			prod_string += " " + re.sub(self.regex_array[2], r"\1", self.line_array[self.line_array_pos+counter])

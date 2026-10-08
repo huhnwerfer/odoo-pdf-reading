@@ -32,12 +32,17 @@ class PLURISELECTUSA(PDF):
 		return re.sub(self.regex_array[0], r"\1", self.line_array[self.line_array_pos])
 
 
+	def count_lines(self):
+		self.line_jumper = 1
+		while not (re.search(r"(\d*\.\d*) (\d*\.\d*)", self.line_array[self.line_array_pos + self.line_jumper]) or re.search(self.delete_lines_until_pattern, self.line_array[self.line_array_pos + self.line_jumper]) or re.search(self.format_lines_until_pattern, self.line_array[self.line_array_pos + self.line_jumper])):
+			self.line_jumper += 1
+
+
 	def prod_des(self) -> str:
 		prod_string = ""
 		prod_string += re.sub(self.regex_array[0], r"\2", self.line_array[self.line_array_pos])
-		if not re.match(self.delete_lines_until_pattern, self.line_array[self.line_array_pos+1]):
+		for i in range(1, self.line_jumper):
 			prod_string += " " + self.line_array[self.line_array_pos+1]
-			self.line_jumper = 2
 		return prod_string
 
 

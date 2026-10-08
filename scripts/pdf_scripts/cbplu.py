@@ -5,7 +5,7 @@ from .pdf import PDF
 class CBPLU(PDF):
 	delete_lines_until_pattern = r"\d{2}-\d{5}-\d{2}"
 	format_lines_until_pattern = r"Total\d*(,|.)\d*"
-	regex_array = [r"(\d{2}-\d{5}-\d{2}) PLU (.*) (\d*) (\d*) (\d*\.\d*) (\d*\.\d*)", r"(.*)( *PC)( EUR)"]
+	regex_array = [r"(\d{2}-\d{5}-\d{2}) PLU (.*) (\d*) (\d*) (\d*\.\d*) (\d*\.\d*)", r"(.*)(( *PC)|(ML))( EUR)"]
 
 
 	def prod_no(self) -> str:
@@ -14,8 +14,9 @@ class CBPLU(PDF):
 
 	def prod_des(self) -> str:
 		prod_des_str = ""
-		prod_des_str += re.sub(self.regex_array[0], r"\2", self.line_array[self.line_array_pos]) + " "
-		prod_des_str += re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos+1])
+		prod_des_str += re.sub(self.regex_array[0], r"\2", self.line_array[self.line_array_pos])
+		for i in range(1, self.line_jumper):
+			prod_des_str += " " + re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos+i])
 		return prod_des_str
 
 
