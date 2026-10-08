@@ -9,3 +9,4 @@ from .cnrs import CNRS
 from .dominique import *
 from .geyer import *
 from .midt import *
+from .oncologia import *
