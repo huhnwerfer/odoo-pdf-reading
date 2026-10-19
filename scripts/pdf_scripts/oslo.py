@@ -3,7 +3,7 @@ from .pdf import PDF
 
 
 class OSLO(PDF):
-	delete_lines_until_pattern = r"no Description Agreement delivery date Qty Unit Price Amount"
+	delete_lines_until_pattern = r"\d* (.*).* \d{1,2}-\w{2,4}-\d{1,2} (\d*),\d*.* ((\d* ?\d*)*,\d*) ((\d* ?\d*)*,\d*)"
 	format_lines_until_pattern = r"Totalt"
 	# 1 pluriStrainer Mini 70 23-SEP-26 2,00 STK STK 819,00 1 638,00
 	# µm
@@ -18,7 +18,7 @@ class OSLO(PDF):
 		return self.csv_array
 
 	def delete_lines_until_(self):
-		while self.line_array_pos < len(self.line_array) and not re.search(self.delete_lines_until_pattern, self.line_array[self.line_array_pos - 1]):
+		while self.line_array_pos < len(self.line_array) and not re.search(self.delete_lines_until_pattern, self.line_array[self.line_array_pos]):
 			self.line_array_pos += 1
 			pass
 		return

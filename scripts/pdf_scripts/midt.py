@@ -46,14 +46,6 @@ class MIDT(PDF):
 
 
 	def quantity(self) -> str:
-		print(self.regex_array[1])
-		print(self.line_array[self.line_array_pos + 1])
-		print(re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos + 1]))
-		m = re.search(self.regex_array[1], self.line_array[self.line_array_pos + 1])
-
-		print(m.group(0))  # entire match
-		print(m.group(1))  # first capture
-		print(m.groups())  # all captures
 		quant = float(re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos + 1]))#.replace(",", "."))
 		if quant.is_integer():
 			return str(int(quant))
