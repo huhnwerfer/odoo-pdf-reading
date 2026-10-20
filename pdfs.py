@@ -73,8 +73,9 @@ class PDFS:
 		return company.line_array_to_dict_array(line_array)
 
 
-	def pdf_to_txt(self, output_dir, pdf_text, file_name):
-		with open("failing_txts/" + file_name + ".txt", "w+") as f:
+	@staticmethod
+	def pdf_to_txt(output_dir, pdf_text, file_name):
+		with open(output_dir + file_name + ".txt", "w+") as f:
 			f.write(pdf_text)
 			pass
 
@@ -82,10 +83,6 @@ class PDFS:
 	def which_script(self, file_name, line_array):
 		for script in self.scripts:
 			if script.lower() in file_name.lower():
-				with open("txts/" + file_name + ".txt", "w+") as f:
-					for line in line_array:
-						f.write(line + "\n")
-				pass
 				instance = globals()[script.upper()]#input the script name as upper() so it matches its own class
 				instantiated = instance(line_array)
 				csv_array = instantiated.format_array_to_csv()
@@ -109,9 +106,6 @@ class PDFS:
 			pass
 		else:
 			print(file_name + " isnt handled yet on its own")
-			with open("failing_txts/" + file_name + ".txt", "w+") as f:
-				for line in line_array:
-					f.write(line + "\n")
 			#raise Exception("No such script")
 			pass
 		return

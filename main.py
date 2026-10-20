@@ -47,10 +47,9 @@ def main(arg_array):
 		if not company:
 			print(f"{file_name} could not be handled.")
 			pdf.pdf_to_txt(failing_txts, pdf_text, file_name)
-			# write pdf to failing txts
 			continue
 		print(f"{file_name} is being handled by {company.__class__.__name__}.")
-		# write pdf to txts
+		pdf.pdf_to_txt(txts, pdf_text, file_name)
 		company.set_line_array(line_array)
 		csv_array = pdf.line_array_to_dict_array(company, line_array, file_name)
 		#check if csv_array right format
