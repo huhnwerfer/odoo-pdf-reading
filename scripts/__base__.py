@@ -4,14 +4,18 @@ class PDF:
 	format_lines_until_pattern = None
 	delete_lines_until_pattern = None
 	regex_array = None
-	def __init__(self, line_array: list):
-		self.line_array = line_array
+	def __init__(self):#, line_array: list):
+		#self.line_array = line_array
 		self.csv_array = []
 		self.csv_array.append("Product Number" + "\t" + "Product Description" + "\t" + "U O M" + "\t" + "Quantity" + "\t" + "Unit Price" + "\t" + "Total" + "\n")
 		self.line_array_pos = 0
 		self.new_string = {}
 		self.line_jumper = 1
 		pass
+
+
+	def set_line_array(self, line_array: list):
+		self.line_array = line_array
 
 
 	def __init_subclass__(cls, **kwargs):
@@ -80,16 +84,27 @@ class PDF:
 
 
 	def delete_lines_until_(self):
-		raise Exception("Function delete_lines_untill_prod_no is not implemented")
+		while self.line_array_pos < len(self.line_array) and not re.search(self.delete_lines_until_pattern, self.line_array[self.line_array_pos]):
+			self.line_array_pos += 1
+			pass
+		return
 
 
 	def format_lines_until_(self):
-		raise Exception("Function format_lines_untill_totall is not implemented")
+		while self.line_array_pos < len(self.line_array) and not re.search(self.format_lines_until_pattern, self.line_array[self.line_array_pos]):
+			self.csv_array.append(self.csv_line())
+			self.line_array_pos += self.line_jumper
+			self.line_jumper = 1
+			pass
+		return
 
 
 	def format_array_to_csv(self):
-		raise Exception("Function format_array_to_csv is not implemented")
+		while self.line_array_pos < len(self.line_array):
+			self.delete_lines_until_()
+			self.format_lines_until_()
+		return self.csv_array
 
 
 	def is_correct_firm(self, pdf_text):
-		raise Exception("Function is_correct_firm is not implemented")
+		raise Exception(f"In {self.__class__.__name__} function is_correct_firm is not implemented")

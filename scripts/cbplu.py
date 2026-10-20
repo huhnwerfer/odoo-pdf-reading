@@ -36,24 +36,5 @@ class CBPLU(PDF):
 		return re.sub(self.regex_array[0], r"\6", self.line_array[self.line_array_pos])
 
 
-	def delete_lines_until_(self):
-		while self.line_array_pos < len(self.line_array) and not re.search(self.delete_lines_until_pattern, self.line_array[self.line_array_pos]):
-			self.line_array_pos += 1
-			pass
-		return
-
-	def format_lines_until_(self):
-		while self.line_array_pos < len(self.line_array) and not re.search(self.format_lines_until_pattern, self.line_array[
-			self.line_array_pos]):  # not reading regex match to Total\d*(,|.)\d*:
-			self.csv_array.append(self.csv_line())
-			self.line_array_pos += 2
-			pass
-		return
-
-	def format_array_to_csv(self):
-		while self.line_array_pos < len(self.line_array):
-			self.delete_lines_until_()
-			self.format_lines_until_()
-		return self.csv_array
-	pass
-
+	def is_correct_firm(self, pdf_text):
+		return re.search(r"CBPLU", pdf_text)
