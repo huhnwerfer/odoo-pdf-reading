@@ -6,14 +6,9 @@ from scripts import * #do not delete, it is being used
 
 MAX_ERROR_PER_PDF = 5
 class PDFS:
-	def __init__(self, input_dir: str, output_dir: str):
-		self.input_dir = input_dir
-		self.output_dir = output_dir
-		return
-
-
-	def pdf_to_array(self, file) -> list:
-		with pdfplumber.open(self.input_dir + file) as pdf:
+	@staticmethod
+	def pdf_to_array(input_dir, file) -> list:
+		with pdfplumber.open(input_dir + file) as pdf:
 			pages = ""
 			for page in pdf.pages:
 				pages += page.extract_text()
@@ -130,8 +125,9 @@ class PDFS:
 				status.append("line " + str(i+1) + ": "+ csv_array[i])
 		return status
 
-	def save_csv_to_file(self, csv_array, file_name):
-		with open(self.output_dir + file_name + ".csv", "w+") as f:
+	@staticmethod
+	def save_csv_to_file(output_dir, csv_array, file_name):
+		with open(output_dir + file_name + ".csv", "w+") as f:
 			for line in csv_array:
 				f.write(line)
 				pass

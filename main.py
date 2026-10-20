@@ -38,8 +38,8 @@ def main(arg_array):
 		input_dir, file_names = files_given(arg_array)
 		pass
 	for file_name in file_names:
-		pdf = PDFS(input_dir, output_dir)
-		line_array = pdf.pdf_to_array(file_name)
+		pdf = PDFS()
+		line_array = pdf.pdf_to_array(input_dir, file_name)
 		pdf_text = pdf.line_array_to_text(line_array)
 		company = pdf.find_company(pdf_text)
 		if not company:
@@ -50,8 +50,8 @@ def main(arg_array):
 		# write pdf to txts
 		company.set_line_array(line_array)
 		csv_array = pdf.line_array_to_dict_array(company, line_array, file_name)
-		#check if csv_array right fomrat
-		pdf.save_csv_to_file(csv_array, file_name)
+		#check if csv_array right format
+		pdf.save_csv_to_file(output_dir, csv_array, file_name)
 		pass
 	return
 	pass
