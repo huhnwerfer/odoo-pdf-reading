@@ -34,8 +34,6 @@ class PDF:
 			raise TypeError(error_string)
 
 
-
-
 	def csv_line(self) -> str:
 		self.count_lines()
 		csv_string = ""
@@ -92,3 +90,6 @@ class PDF:
 	def format_array_to_csv(self):
 		raise Exception("Function format_array_to_csv is not implemented")
 
+
+	def is_correct_firm(self, pdf_text):
+		raise Exception("Function is_correct_firm is not implemented")

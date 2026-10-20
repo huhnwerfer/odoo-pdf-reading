@@ -1,5 +1,5 @@
 import re
-from .pdf import PDF
+from .__base__ import PDF
 
 
 class FUNAKOSHI(PDF):

@@ -1,17 +1,17 @@
 from pathlib import Path
+import importlib
 import os
 import pdfplumber
 import re
-from .pdf_scripts import * #do not delete, it is being used
+from scripts import * #do not delete, it is being used
+
+
 MAX_ERROR_PER_PDF = 5
 class PDFS:
-	scripts = []
-	path_to_pdf_scripts = "scripts/pdf_scripts"
 	def __init__(self, file_names: list, input_dir: str, output_dir: str):
 		self.file_names = file_names
 		self.input_dir = input_dir
 		self.output_dir = output_dir
-		self.what_scripts()
 		return
 
 
@@ -25,24 +25,63 @@ class PDFS:
 		return pages.splitlines()
 
 
-	def what_scripts(self):
-		for script in os.listdir(self.path_to_pdf_scripts):
-			if not "init" in script and not "pdf" in script:
-				self.scripts.append(Path(script).stem)
+
+	@staticmethod
+	def line_array_to_text(line_array) -> str:
+		pdf_text = ""
+		for line in line_array:
+			pdf_text += line + "\n"
+		pdf_text = pdf_text.strip()
+		return pdf_text
+
+
+	@staticmethod
+	def find_company(pdf_text):
+		subfolder = "scripts"
+		folder = Path(__file__).parent / subfolder
+		for file in folder.glob("*.py"):
+			if file.stem in ("__init__", "__base__"):
+				continue
+			module = importlib.import_module(f"{subfolder}.{file.stem}")
+			# Get the company class from the module
+			for name in dir(module):
+				obj = getattr(module, name)
+				if isinstance(obj, type) and issubclass(obj, PDF) and obj is not PDF:
+					company = obj()
+					if company.is_correct_firm(pdf_text):
+						return company
+					pass
 				pass
 			pass
-		return
+		return None
 
 
-	def all_pdfs(self):
-		for file_name in self.file_names:
-			line_array = self.pdf_to_array(file_name)
-			self.which_pdf(file_name, line_array)
+	def line_array_to_dict_array(self, company, line_array, file_name) -> list[dict]:
+		#csv_array = company.format_array_to_csv()
+		while company.line_array_pos < len(company.line_array):
+			company.delete_lines_until_()
+			company.format_lines_until_()
+		return company.csv_array
+		csv_status = self.test_csv(csv_array, file_name)
+		csv_status_str = ""
+		csv_status_str += file_name + " has the following problem lines: \n"
+		for line in csv_status:
+			csv_status_str += line
 			pass
-		return
+		csv_status_str += "\n"
+		errors = len(csv_status)
+		match errors:
+			case 0:
+				self.save_csv_to_file(csv_array, file_name)
+			case _ if errors <= MAX_ERROR_PER_PDF:
+				self.save_csv_to_file(csv_array, file_name)
+				print(csv_status_str)
+			case _:
+				raise Exception("Formatting has more then " + str(MAX_ERROR_PER_PDF) + " errors\n" + csv_status_str)
+		return company.line_array_to_dict_array(line_array)
 
 
-	def which_pdf(self, file_name, line_array):
+	def which_script(self, file_name, line_array):
 		for script in self.scripts:
 			if script.lower() in file_name.lower():
 				with open("txts/" + file_name + ".txt", "w+") as f:
@@ -93,7 +132,6 @@ class PDFS:
 			else:
 				status.append("line " + str(i+1) + ": "+ csv_array[i])
 		return status
-
 
 	def save_csv_to_file(self, csv_array, file_name):
 		with open(self.output_dir + file_name + ".csv", "w+") as f:

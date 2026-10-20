@@ -1,6 +1,6 @@
 import sys
 import os
-from scripts import *
+from pdfs import PDFS
 
 
 
@@ -19,7 +19,7 @@ def files_given(arg_array) -> tuple[str, list]:
 	input_dir = ""
 	for file in arg_array:
 		if True: # find out if arg is a pdf and if its a valid path
-			# strip pathj to file and store path and file seperatly
+			# strip path to file and store path and file seperatly
 			file_array.append(file)
 			pass
 		pass
@@ -27,19 +27,30 @@ def files_given(arg_array) -> tuple[str, list]:
 
 
 def main(arg_array):
-	files: list
+	file_names: list
 	input_dir = "pdfs/"
 	output_dir = "outputs/"
 
 	if arg_array == []:
-		files = no_files_given(input_dir)
+		file_names = no_files_given(input_dir)
 		pass
 	else:
-		input_dir, files = files_given(arg_array)
+		input_dir, file_names = files_given(arg_array)
 		pass
+	for file_name in file_names:
+		pdf = PDFS(file_names, input_dir, output_dir)
+		line_array = pdf.pdf_to_array(file_name)
+		pdf_text = pdf.line_array_to_text(line_array)
+		company = pdf.find_company(pdf_text, line_array)
+		if not company:
+			print(f"{file_name} could not be handled.")
+			continue
+		print(f"{file_name} is being handled by {company.__class__.__name__}.")
+		pdf.line_array_to_dict_array(company, line_array, file_name)
 
-	pdfs = PDFS(files, input_dir, output_dir)
-	pdfs.all_pdfs()
+		#pdf.which_script(file_name, line_array)
+		pass
+	return
 	pass
 
 
