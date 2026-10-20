@@ -3,19 +3,13 @@ from .__base__ import PDF
 
 
 class PLURISELECTUSA(PDF):
-	delete_lines_until_pattern = r"\d{2}-\d{5}-\d{2}"
+	delete_lines_until_pattern = r"(\d{2}-\d{5}(-\d{2})?)|(\d*\.\d*) (\d*\.\d*)"
 	format_lines_until_pattern = r"Total"
 	regex_array = [r"(\d{2}-\d{5}-\d{2}) (.*) (\d*)(.*) (\d*\.\d*) (\d*\.\d*)", r"(.*)"]
 
 
 	def prod_no(self) -> str:
 		return re.sub(self.regex_array[0], r"\1", self.line_array[self.line_array_pos])
-
-
-	def count_lines(self):
-		self.line_jumper = 1
-		while not (re.search(r"(\d*\.\d*) (\d*\.\d*)", self.line_array[self.line_array_pos + self.line_jumper]) or re.search(self.delete_lines_until_pattern, self.line_array[self.line_array_pos + self.line_jumper]) or re.search(self.format_lines_until_pattern, self.line_array[self.line_array_pos + self.line_jumper])):
-			self.line_jumper += 1
 
 
 	def prod_des(self) -> str:

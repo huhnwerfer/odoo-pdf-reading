@@ -1,15 +1,12 @@
 from pathlib import Path
 import importlib
-import os
 import pdfplumber
-import re
 from scripts import * #do not delete, it is being used
 
 
 MAX_ERROR_PER_PDF = 5
 class PDFS:
-	def __init__(self, file_names: list, input_dir: str, output_dir: str):
-		self.file_names = file_names
+	def __init__(self, input_dir: str, output_dir: str):
 		self.input_dir = input_dir
 		self.output_dir = output_dir
 		return
