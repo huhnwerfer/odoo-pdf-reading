@@ -18,7 +18,7 @@ def files_given(arg_array) -> tuple[str, list]:
 	file_array = []
 	input_dir = ""
 	for file in arg_array:
-		if True: # find out if arg is a pdf and if its a valid path
+		if True: # find out if arg is a pdf and if it's a valid path
 			# strip path to file and store path and file seperatly
 			file_array.append(file)
 			pass
@@ -56,7 +56,6 @@ def main(arg_array):
 		pdf.save_csv_to_file(output_dir, csv_array, file_name)
 		pass
 	return
-	pass
 
 
 if __name__ == "__main__":

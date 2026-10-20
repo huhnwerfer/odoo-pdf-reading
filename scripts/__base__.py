@@ -39,6 +39,8 @@ class PDF:
 
 
 	def csv_line(self) -> str:
+		errriiriirhdihsdohüv
+		hier muss ich iwie das dict einfügen dann sollte das fast schon gehen
 		self.count_lines()
 		csv_string = ""
 		csv_string += self.prod_no() + "\t"
@@ -92,7 +94,7 @@ class PDF:
 
 	def format_lines_until_(self):
 		while self.line_array_pos < len(self.line_array) and not re.search(self.format_lines_until_pattern, self.line_array[self.line_array_pos]):
-			self.csv_array.append(self.csv_line())
+			self.csv_array.append(self.csv_line())     anstelle von dieser zeile iwie das dict zum dict_array appenden
 			self.line_array_pos += self.line_jumper
 			self.line_jumper = 1
 			pass
