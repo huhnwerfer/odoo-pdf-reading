@@ -73,6 +73,12 @@ class PDFS:
 		return company.line_array_to_dict_array(line_array)
 
 
+	def pdf_to_txt(self, output_dir, pdf_text, file_name):
+		with open("failing_txts/" + file_name + ".txt", "w+") as f:
+			f.write(pdf_text)
+			pass
+
+
 	def which_script(self, file_name, line_array):
 		for script in self.scripts:
 			if script.lower() in file_name.lower():

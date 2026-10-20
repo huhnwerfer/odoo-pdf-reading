@@ -30,6 +30,8 @@ def main(arg_array):
 	file_names: list
 	input_dir = "pdfs/"
 	output_dir = "outputs/"
+	txts = "txts/"
+	failing_txts = "failing_txts/"
 
 	if arg_array == []:
 		file_names = no_files_given(input_dir)
@@ -44,6 +46,7 @@ def main(arg_array):
 		company = pdf.find_company(pdf_text)
 		if not company:
 			print(f"{file_name} could not be handled.")
+			pdf.pdf_to_txt(failing_txts, pdf_text, file_name)
 			# write pdf to failing txts
 			continue
 		print(f"{file_name} is being handled by {company.__class__.__name__}.")
