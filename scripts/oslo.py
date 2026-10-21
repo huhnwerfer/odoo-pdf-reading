@@ -39,5 +39,9 @@ class OSLO(PDF):
 		return re.sub(self.regex_array[2], r"\1", self.line_array[self.line_array_pos + self.line_jumper - 1])
 
 
+	def discount(self) -> str:
+		return ""
+
+
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"OSLO", pdf_text)
