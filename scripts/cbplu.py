@@ -21,7 +21,7 @@ class CBPLU(PDF):
 
 
 	def u_o_m(self) -> str:
-		return re.sub(self.regex_array[0], r"\3", self.line_array[self.line_array_pos])
+		return re.sub(self.regex_array[0], r"\3", self.line_array[self.line_array_pos]) + " " + re.sub(self.regex_array[1], r"\2", self.line_array[self.line_array_pos+1])
 
 
 	def quantity(self) -> str:
