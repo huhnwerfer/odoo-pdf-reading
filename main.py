@@ -51,7 +51,8 @@ def main(arg_array):
 		print(f"{file_name} is being handled by {company.__class__.__name__}.")
 		pdf.pdf_to_txt(txts, pdf_text, file_name)
 		company.set_line_array(line_array)
-		csv_array = pdf.line_array_to_dict_array(company, line_array, file_name)
+		dict_array = pdf.line_array_to_dict_array(company, line_array, file_name)
+		csv_array = pdf.dict_array_to_csv_array(dict_array)
 		#check if csv_array right format
 		pdf.save_csv_to_file(output_dir, csv_array, file_name)
 		pass

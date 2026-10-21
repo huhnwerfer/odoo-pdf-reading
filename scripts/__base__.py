@@ -5,9 +5,10 @@ class PDF:
 	delete_lines_until_pattern = None
 	regex_array = None
 	def __init__(self):#, line_array: list):
-		#self.line_array = line_array
-		self.csv_array = []
-		self.csv_array.append("Product Number" + "\t" + "Product Description" + "\t" + "U O M" + "\t" + "Quantity" + "\t" + "Unit Price" + "\t" + "Total" + "\n")
+		self.line_array = []
+		self.dict_array = []
+		#self.csv_array = []
+		#self.csv_array.append("Product Number" + "\t" + "Product Description" + "\t" + "U O M" + "\t" + "Quantity" + "\t" + "Unit Price" + "\t" + "Total" + "\n")
 		self.line_array_pos = 0
 		self.new_string = {}
 		self.line_jumper = 1
@@ -38,18 +39,24 @@ class PDF:
 			raise TypeError(error_string)
 
 
-	def csv_line(self) -> str:
-		errriiriirhdihsdohüv
-		hier muss ich iwie das dict einfügen dann sollte das fast schon gehen
+	def csv_line(self) -> dict:
+		dict_line = {}
 		self.count_lines()
-		csv_string = ""
-		csv_string += self.prod_no() + "\t"
-		csv_string += self.prod_des() + "\t"
-		csv_string += self.u_o_m() + "\t"
-		csv_string += self.quantity() + "\t"
-		csv_string += self.unit_price() + "\t"
-		csv_string += self.total() + "\t"
-		return csv_string[:-1] + "\n"
+		#csv_string = ""
+		dict_line["Product Number"] = self.prod_no()
+		#csv_string += self.prod_no() + "\t"
+		dict_line["Product Description"] = self.prod_des()
+		#csv_string += self.prod_des() + "\t"
+		dict_line["U O M"] = self.u_o_m()
+		#csv_string += self.u_o_m() + "\t"
+		dict_line["Quantity"] = self.quantity()
+		#csv_string += self.quantity() + "\t"
+		dict_line["Unit Price"] = self.unit_price()
+		#csv_string += self.unit_price() + "\t"
+		dict_line["Total"] = self.total()
+		#csv_string += self.total() + "\t"
+		return dict_line
+		#return csv_string[:-1] + "\n"
 
 
 	def count_lines(self):
@@ -94,7 +101,8 @@ class PDF:
 
 	def format_lines_until_(self):
 		while self.line_array_pos < len(self.line_array) and not re.search(self.format_lines_until_pattern, self.line_array[self.line_array_pos]):
-			self.csv_array.append(self.csv_line())     anstelle von dieser zeile iwie das dict zum dict_array appenden
+			self.dict_array.append(self.csv_line())
+			#self.csv_array.append(self.csv_line())     anstelle von dieser zeile iwie das dict zum dict_array appenden
 			self.line_array_pos += self.line_jumper
 			self.line_jumper = 1
 			pass

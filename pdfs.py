@@ -53,7 +53,8 @@ class PDFS:
 		while company.line_array_pos < len(company.line_array):
 			company.delete_lines_until_()
 			company.format_lines_until_()
-		return company.csv_array
+		return company.dict_array
+		#return company.csv_array
 		csv_status = self.test_csv(csv_array, file_name)
 		csv_status_str = ""
 		csv_status_str += file_name + " has the following problem lines: \n"
@@ -133,3 +134,29 @@ class PDFS:
 				pass
 			pass
 		pass
+
+	def dict_array_to_csv_array(self, dict_array) -> list[str]:
+		csv_array = []
+		filled_dict_keys = []
+		for dictionary in dict_array:
+			for k, v in dictionary.items():
+				if v is not "":
+					if k not in filled_dict_keys:
+						filled_dict_keys.append(k)
+						pass
+					pass
+				pass
+			pass
+		csv_array.append("")
+		for key in filled_dict_keys:
+			csv_array[-1] += key + "\t"
+		csv_array[-1] = csv_array[-1].strip() + "\n"
+		for dictionary in dict_array:
+			csv_array.append("")
+			for k in filled_dict_keys:
+				csv_array[-1] += dictionary[k] + "\t"
+				pass
+			csv_array[-1] = csv_array[-1].strip() + "\n"
+			pass
+		csv_array[-1] = csv_array[-1].strip()
+		return csv_array
