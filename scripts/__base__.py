@@ -36,21 +36,14 @@ class PDF:
 	def csv_line(self) -> dict:
 		dict_line = {}
 		self.count_lines()
-		#csv_string = ""
 		dict_line["Product Number"] = self.prod_no()
-		#csv_string += self.prod_no() + "\t"
-		dict_line["Product Description"] = self.prod_des()
-		#csv_string += self.prod_des() + "\t"
-		dict_line["U O M"] = self.u_o_m()
-		#csv_string += self.u_o_m() + "\t"
 		dict_line["Quantity"] = self.quantity()
-		#csv_string += self.quantity() + "\t"
+		dict_line["Discount"] = self.discount()
+		dict_line["Product Description"] = self.prod_des()
+		dict_line["U O M"] = self.u_o_m()
 		dict_line["Unit Price"] = self.unit_price()
-		#csv_string += self.unit_price() + "\t"
 		dict_line["Total"] = self.total()
-		#csv_string += self.total() + "\t"
 		return dict_line
-		#return csv_string[:-1] + "\n"
 
 
 	def count_lines(self):
@@ -60,21 +53,26 @@ class PDF:
 
 
 	def prod_no(self) -> str:
-		raise Exception("Function prod_no is not implemented")
-		return ""
-
-
-	def prod_des(self) -> str:
-		raise Exception("Function prod_des is not implemented")
-		return ""
-
-
-	def u_o_m(self) -> str:
+		raise Exception(f"{self.__class__.__name__}: Function prod_no is not implemented")
 		return ""
 
 
 	def quantity(self) -> str:
-		raise Exception("Function quantity is not implemented")
+		raise Exception(f"{self.__class__.__name__}: Function quantity is not implemented")
+		return ""
+
+
+	def discount(self) -> str:
+		raise Exception(f"{self.__class__.__name__}: Function discount is not implemented")
+		return ""
+
+
+	def prod_des(self) -> str:
+		raise Exception(f"{self.__class__.__name__}: Function prod_des is not implemented")
+		return ""
+
+
+	def u_o_m(self) -> str:
 		return ""
 
 
