@@ -42,6 +42,7 @@ def main(arg_array):
 	else:
 		input_dir, file_names = files_given(arg_array)
 		pass
+	file_names.sort()
 	for file_name in file_names:
 		pdf = PDFS()
 		line_array = pdf.pdf_to_array(input_dir, file_name)

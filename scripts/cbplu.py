@@ -5,6 +5,10 @@ from .__base__ import PDF
 class CBPLU(PDF):
 	delete_lines_until_pattern = r"\d{2}-\d{5}-\d{2}"
 	format_lines_until_pattern = r"Total\d*(,|.)\d*"
+	# Product No. Product Description U O M Quantity Unit Price Total
+
+	# 42-50000-03 PLU pluriStrainer Funnel, pluriStrainer accessories 25 1 40.30 40.30
+	# 25pc with the same LOT. PC EUR
 	regex_array = [r"(\d{2}-\d{5}-\d{2}) PLU (.*) (\d*) (\d*) (\d*\.\d*) (\d*\.\d*)", r"(.*)(( *PC)|(ML))( EUR)"]
 
 
@@ -34,6 +38,10 @@ class CBPLU(PDF):
 
 	def total(self) -> str:
 		return re.sub(self.regex_array[0], r"\6", self.line_array[self.line_array_pos])
+
+
+	def discount(self) -> str:
+		return "0.00% (no field given)"
 
 
 	def is_correct_firm(self, pdf_text):
