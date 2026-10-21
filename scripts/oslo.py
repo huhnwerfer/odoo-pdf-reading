@@ -40,7 +40,7 @@ class OSLO(PDF):
 
 
 	def discount(self) -> str:
-		return ""
+		return "0.00% (no field given)"
 
 
 	def is_correct_firm(self, pdf_text):
