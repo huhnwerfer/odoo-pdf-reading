@@ -83,6 +83,8 @@ class PDFS:
 			elif not re.fullmatch(r"(\d{2}-\d{5}(-\d{2})?)", value):
 				error_msg += f"{RED_COLOR}{key} is invalid. (expected dd-ddddd(-dd)): line={index}; {value}\n{RESET_COLOR}"
 				pass
+			elif re.fullmatch(r"(\d{2}-\d{5})", value):
+				error_msg += f"{YELLOW_COLOR}{key} format unclear.: line={index}; {value}\n{RESET_COLOR}"
 
 			key = "Quantity"
 			value = dictionary[key]
@@ -99,7 +101,7 @@ class PDFS:
 			if value == "":
 				error_msg += f"{RED_COLOR}line={index}; {key} is empty\n{RESET_COLOR}"
 				pass
-			elif not re.fullmatch(r"(\d+\.\d+%?)", value):
+			elif not re.fullmatch(r"(\d+\.\d+%?)|(0\.00% \(no field given\))", value):
 				error_msg += f"{RED_COLOR}{key} is invalid or wrong formatted. (expected d.dd(%)): line={index}; {value}\n{RESET_COLOR}"
 				pass
 			pass
