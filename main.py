@@ -1,8 +1,11 @@
 import sys
 import os
-from scripts import *
+from pdfs import PDFS
 
 
+RESET_COLOR = "\033[0m"
+RED_COLOR = "\033[31m"
+YELLOW_COLOR = "\033[33m"
 
 def no_files_given(input_dir: str) -> list:
 	file_array = []
@@ -18,8 +21,8 @@ def files_given(arg_array) -> tuple[str, list]:
 	file_array = []
 	input_dir = ""
 	for file in arg_array:
-		if True: # find out if arg is a pdf and if its a valid path
-			# strip pathj to file and store path and file seperatly
+		if True: # find out if arg is a pdf and if it's a valid path
+			# strip path to file and store path and file seperatly
 			file_array.append(file)
 			pass
 		pass
@@ -27,20 +30,38 @@ def files_given(arg_array) -> tuple[str, list]:
 
 
 def main(arg_array):
-	files: list
+	file_names: list
 	input_dir = "pdfs/"
 	output_dir = "outputs/"
+	txt_dir = "txts/"
+	failing_txt_dir = "failing_txts/"
 
 	if arg_array == []:
-		files = no_files_given(input_dir)
+		file_names = no_files_given(input_dir)
 		pass
 	else:
-		input_dir, files = files_given(arg_array)
+		input_dir, file_names = files_given(arg_array)
 		pass
+	for file_name in file_names:
+		pdf = PDFS()
+		line_array = pdf.pdf_to_array(input_dir, file_name)
+		pdf_text = pdf.line_array_to_text(line_array)
+		company = pdf.find_company(line_array, pdf_text)
+		if not company:
+			print(f"{RED_COLOR}{file_name} could not be handled.{RESET_COLOR}")
+			pdf.write_txt_to_file(failing_txt_dir, pdf_text, file_name)
+			continue
 
-	pdfs = PDFS(files, input_dir, output_dir)
-	pdfs.all_pdfs()
-	pass
+		print(f"{file_name} is being handled by {company.__class__.__name__}.")
+		pdf.write_txt_to_file(txt_dir, pdf_text, file_name)
+		dict_array = pdf.line_array_to_dict_array(company, line_array, file_name)
+		error_msg = pdf.test_dict_array(dict_array, file_name)
+		if error_msg != "":
+			print(error_msg)
+		csv_array = pdf.dict_array_to_csv_array(dict_array)
+		pdf.write_csv_to_file(output_dir, csv_array, file_name)
+		pass
+	return
 
 
 if __name__ == "__main__":

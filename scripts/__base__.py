@@ -6,8 +6,7 @@ class PDF:
 	regex_array = None
 	def __init__(self, line_array: list):
 		self.line_array = line_array
-		self.csv_array = []
-		self.csv_array.append("Product Number" + "\t" + "Product Description" + "\t" + "U O M" + "\t" + "Quantity" + "\t" + "Unit Price" + "\t" + "Total" + "\n")
+		self.dict_array = []
 		self.line_array_pos = 0
 		self.new_string = {}
 		self.line_jumper = 1
@@ -34,18 +33,24 @@ class PDF:
 			raise TypeError(error_string)
 
 
-
-
-	def csv_line(self) -> str:
+	def csv_line(self) -> dict:
+		dict_line = {}
 		self.count_lines()
-		csv_string = ""
-		csv_string += self.prod_no() + "\t"
-		csv_string += self.prod_des() + "\t"
-		csv_string += self.u_o_m() + "\t"
-		csv_string += self.quantity() + "\t"
-		csv_string += self.unit_price() + "\t"
-		csv_string += self.total() + "\t"
-		return csv_string[:-1] + "\n"
+		#csv_string = ""
+		dict_line["Product Number"] = self.prod_no()
+		#csv_string += self.prod_no() + "\t"
+		dict_line["Product Description"] = self.prod_des()
+		#csv_string += self.prod_des() + "\t"
+		dict_line["U O M"] = self.u_o_m()
+		#csv_string += self.u_o_m() + "\t"
+		dict_line["Quantity"] = self.quantity()
+		#csv_string += self.quantity() + "\t"
+		dict_line["Unit Price"] = self.unit_price()
+		#csv_string += self.unit_price() + "\t"
+		dict_line["Total"] = self.total()
+		#csv_string += self.total() + "\t"
+		return dict_line
+		#return csv_string[:-1] + "\n"
 
 
 	def count_lines(self):
@@ -82,13 +87,28 @@ class PDF:
 
 
 	def delete_lines_until_(self):
-		raise Exception("Function delete_lines_untill_prod_no is not implemented")
+		while self.line_array_pos < len(self.line_array) and not re.search(self.delete_lines_until_pattern, self.line_array[self.line_array_pos]):
+			self.line_array_pos += 1
+			pass
+		return
 
 
 	def format_lines_until_(self):
-		raise Exception("Function format_lines_untill_totall is not implemented")
+		while self.line_array_pos < len(self.line_array) and not re.search(self.format_lines_until_pattern, self.line_array[self.line_array_pos]):
+			self.dict_array.append(self.csv_line())
+			#self.csv_array.append(self.csv_line())     anstelle von dieser zeile iwie das dict zum dict_array appenden
+			self.line_array_pos += self.line_jumper
+			self.line_jumper = 1
+			pass
+		return
 
 
 	def format_array_to_csv(self):
-		raise Exception("Function format_array_to_csv is not implemented")
+		while self.line_array_pos < len(self.line_array):
+			self.delete_lines_until_()
+			self.format_lines_until_()
+		return self.csv_array
 
+
+	def is_correct_firm(self, pdf_text):
+		raise Exception(f"In {self.__class__.__name__} function is_correct_firm is not implemented")
