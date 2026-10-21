@@ -74,6 +74,7 @@ class PDFS:
 			raise Exception(f"{file_name} failed: dict_array is empty")
 
 		for index, dictionary in enumerate(dict_array, start=1):
+
 			key = "Product Number"
 			value = dictionary[key]
 			if value == "":
@@ -82,14 +83,7 @@ class PDFS:
 			elif not re.fullmatch(r"(\d{2}-\d{5}(-\d{2})?)", value):
 				error_msg += f"{RED_COLOR}{key} is invalid. (expected dd-ddddd(-dd)): line={index}; {value}\n{RESET_COLOR}"
 				pass
-			key = "Product Description"
-			value = dictionary[key]
-			if value == "":
-				error_msg += f"{YELLOW_COLOR}line={index}; {key} is empty\n{RESET_COLOR}"
-				pass
-			elif not re.fullmatch(r"(.{6,})", value):
-				error_msg += f"{YELLOW_COLOR}{key} is short. (at least 6 char): line={index}; {value}\n{RESET_COLOR}"
-				pass
+
 			key = "Quantity"
 			value = dictionary[key]
 			if value == "":
@@ -99,6 +93,25 @@ class PDFS:
 				error_msg += f"{RED_COLOR}{key} is invalid or to big. (max 99999): line={index}; {value}\n{RESET_COLOR}"
 				pass
 			pass
+
+			key = "Discount"
+			value = dictionary[key]
+			if value == "":
+				error_msg += f"{RED_COLOR}line={index}; {key} is empty\n{RESET_COLOR}"
+				pass
+			elif not re.fullmatch(r"(\d+\.\d+%?)", value):
+				error_msg += f"{RED_COLOR}{key} is invalid or wrong formatted. (expected d.dd(%)): line={index}; {value}\n{RESET_COLOR}"
+				pass
+			pass
+
+			key = "Product Description"
+			value = dictionary[key]
+			if value == "":
+				error_msg += f"{YELLOW_COLOR}line={index}; {key} is empty\n{RESET_COLOR}"
+				pass
+			elif not re.fullmatch(r"(.{6,})", value):
+				error_msg += f"{YELLOW_COLOR}{key} is short. (at least 6 char): line={index}; {value}\n{RESET_COLOR}"
+				pass
 		return error_msg + ""
 
 
