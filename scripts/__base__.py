@@ -4,19 +4,13 @@ class PDF:
 	format_lines_until_pattern = None
 	delete_lines_until_pattern = None
 	regex_array = None
-	def __init__(self):#, line_array: list):
-		self.line_array = []
+	def __init__(self, line_array: list):
+		self.line_array = line_array
 		self.dict_array = []
-		#self.csv_array = []
-		#self.csv_array.append("Product Number" + "\t" + "Product Description" + "\t" + "U O M" + "\t" + "Quantity" + "\t" + "Unit Price" + "\t" + "Total" + "\n")
 		self.line_array_pos = 0
 		self.new_string = {}
 		self.line_jumper = 1
 		pass
-
-
-	def set_line_array(self, line_array: list):
-		self.line_array = line_array
 
 
 	def __init_subclass__(cls, **kwargs):

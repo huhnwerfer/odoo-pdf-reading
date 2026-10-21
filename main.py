@@ -3,6 +3,9 @@ import os
 from pdfs import PDFS
 
 
+RESET_COLOR = "\033[0m"
+RED_COLOR = "\033[31m"
+YELLOW_COLOR = "\033[33m"
 
 def no_files_given(input_dir: str) -> list:
 	file_array = []
@@ -30,8 +33,8 @@ def main(arg_array):
 	file_names: list
 	input_dir = "pdfs/"
 	output_dir = "outputs/"
-	txts = "txts/"
-	failing_txts = "failing_txts/"
+	txt_dir = "txts/"
+	failing_txt_dir = "failing_txts/"
 
 	if arg_array == []:
 		file_names = no_files_given(input_dir)
@@ -43,18 +46,20 @@ def main(arg_array):
 		pdf = PDFS()
 		line_array = pdf.pdf_to_array(input_dir, file_name)
 		pdf_text = pdf.line_array_to_text(line_array)
-		company = pdf.find_company(pdf_text)
+		company = pdf.find_company(line_array, pdf_text)
 		if not company:
-			print(f"{file_name} could not be handled.")
-			pdf.pdf_to_txt(failing_txts, pdf_text, file_name)
+			print(f"{RED_COLOR}{file_name} could not be handled.{RESET_COLOR}")
+			pdf.write_txt_to_file(failing_txt_dir, pdf_text, file_name)
 			continue
+
 		print(f"{file_name} is being handled by {company.__class__.__name__}.")
-		pdf.pdf_to_txt(txts, pdf_text, file_name)
-		company.set_line_array(line_array)
+		pdf.write_txt_to_file(txt_dir, pdf_text, file_name)
 		dict_array = pdf.line_array_to_dict_array(company, line_array, file_name)
+		error_msg = pdf.test_dict_array(dict_array, file_name)
+		if error_msg != "":
+			print(error_msg)
 		csv_array = pdf.dict_array_to_csv_array(dict_array)
-		#check if csv_array right format
-		pdf.save_csv_to_file(output_dir, csv_array, file_name)
+		pdf.write_csv_to_file(output_dir, csv_array, file_name)
 		pass
 	return
 
