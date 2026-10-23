@@ -5,8 +5,10 @@ from .__base__ import PDF
 class CAMBRIDGE(PDF):
 	delete_lines_until_pattern = r"(\d{2}-\d{5}-(\d{2})?)"
 	format_lines_until_pattern = r"Deliver To"
-	#Qty	Catalogue No.	Description	Requested Date	Unit Price	Disc %	Total Price
-	regex_array = [r"(\d+) (\d{2}-\d{5}-(\d{2})?) (.*) \d{2}/\d{2}/\d{4} (\d*\.\d*) \d*\.\d* (\d*\.\d*)", r"(.*)"]
+	# Qty	Catalogue No.	Description	Requested Date	Unit Price	Disc %	Total Price
+	# 1 43-10020-50 pluriStrainer Mini Cell Strainer, pore size 20 um 25/09/2026 59.50 0.00 59.50
+	# 1 PAK
+	regex_array = [r"(\d+) (\d{2}-\d{5}-(\d{2})?) (.*) \d{2}/\d{2}/\d{4} (\d*\.\d*) (\d*\.\d*) (\d*\.\d*)", r"(.*)"]
 
 
 	def quantity(self) -> str:
@@ -29,8 +31,12 @@ class CAMBRIDGE(PDF):
 		return re.sub(self.regex_array[0], r"\5", self.line_array[self.line_array_pos])
 
 
-	def total(self) -> str:
+	def discount(self) -> str:
 		return re.sub(self.regex_array[0], r"\6", self.line_array[self.line_array_pos])
+
+
+	def total(self) -> str:
+		return re.sub(self.regex_array[0], r"\7", self.line_array[self.line_array_pos])
 
 
 	def u_o_m(self) -> str:
