@@ -35,7 +35,7 @@ class PDFS:
 	def find_company(line_array, pdf_text):
 		subfolder = "scripts"
 		folder = Path(__file__).parent / subfolder
-		for file in folder.glob("*.py"):
+		for file in sorted(folder.glob("*.py")):
 			if file.stem in ("__init__", "__base__"):
 				continue
 			module = importlib.import_module(f"{subfolder}.{file.stem}")
