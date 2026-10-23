@@ -38,7 +38,10 @@ class DOMINIQUE(PDF):
 
 
 	def discount(self) -> str:
-		return re.sub(self.regex_array[0], r"\6", self.line_array[self.line_array_pos])
+		string = re.sub(self.regex_array[0], r"\6", self.line_array[self.line_array_pos])
+		if string == "":
+			return "0.00% (no discount found)"
+		return string
 
 
 	def total(self) -> str:

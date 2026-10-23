@@ -100,7 +100,6 @@ class PDFS:
 			value = dictionary[key]
 			if value == "":
 				error_msg += f"{YELLOW_COLOR}line={index}; {key} is empty\n{RESET_COLOR}"
-				dictionary[key] = "0.00% (no discount found)"
 				pass
 			elif not re.fullmatch(r"(\d+\.\d+%?)|(0\.00% \(no field given\))", value):
 				error_msg += f"{YELLOW_COLOR}{key} is invalid or wrong formatted. (expected d.dd(%)): line={index}; {value}\n{RESET_COLOR}"
