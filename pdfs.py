@@ -99,10 +99,11 @@ class PDFS:
 			key = "Discount"
 			value = dictionary[key]
 			if value == "":
-				error_msg += f"{RED_COLOR}line={index}; {key} is empty\n{RESET_COLOR}"
+				error_msg += f"{YELLOW_COLOR}line={index}; {key} is empty\n{RESET_COLOR}"
+				dictionary[key] = "0.00% (no discount found)"
 				pass
 			elif not re.fullmatch(r"(\d+\.\d+%?)|(0\.00% \(no field given\))", value):
-				error_msg += f"{RED_COLOR}{key} is invalid or wrong formatted. (expected d.dd(%)): line={index}; {value}\n{RESET_COLOR}"
+				error_msg += f"{YELLOW_COLOR}{key} is invalid or wrong formatted. (expected d.dd(%)): line={index}; {value}\n{RESET_COLOR}"
 				pass
 			pass
 
@@ -120,7 +121,7 @@ class PDFS:
 	@staticmethod
 	def dict_array_to_csv_array(dict_array) -> list[str]:
 		csv_array = []
-		filled_dict_keys = []
+		filled_dict_keys = ["Product Number", "Quantity", "Discount"]
 		for dictionary in dict_array:
 			for k, v in dictionary.items():
 				if v != "":
