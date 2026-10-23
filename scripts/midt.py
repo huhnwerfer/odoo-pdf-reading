@@ -5,6 +5,10 @@ from .__base__ import PDF
 class MIDT(PDF):
 	delete_lines_until_pattern = r"(\d{2}-\d{5}(-\d{2})?)"
 	format_lines_until_pattern = r"Samlet værdi"
+	# Pos. Varenr. Betegnelse Lev.-varerenr.
+	# Leveringsdato/ Mængde Enhed Pris pr. enhed Nettoværdi
+	# Udførelsesperiode
+
 	# 1 pluristrainer mini 70um 43-10070-70
 	# 25.09.2026 2 PK 4.460,00 DKK/1 PK 8.920,00 DKK
 	# Positionslangtekst:
@@ -37,6 +41,10 @@ class MIDT(PDF):
 
 	def total(self) -> str:
 		return re.sub(self.regex_array[1], r"\5", self.line_array[self.line_array_pos + 1])
+
+
+	def discount(self) -> str:
+		return "0.00% (no field given)"
 
 
 	def is_correct_firm(self, pdf_text):

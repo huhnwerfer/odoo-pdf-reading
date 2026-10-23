@@ -5,6 +5,8 @@ from .__base__ import PDF
 class ONCOLOGIA(PDF):
 	delete_lines_until_pattern = r"\d* (\d{6}) \d* (\d+) .* (\d*,\d*) (\d*,\d*)"
 	format_lines_until_pattern = r"__+|Total"
+	# L_in_e__Y_o_ur_ C_o_de_/D_es_c_rip_tio_n_____O_u_r C_o_de________________Q_ua_n_tity___________U_ni_t P_r._____T_ot_al_ P_ric_e____
+
 	# 010 213362 212496 1 Pcs 340,73 340,73
 	# Streck - Cyto-Chex® BCT (1 PAK, (5 ml, 25 Röhrchen,
 	# CE-IVD))
@@ -35,6 +37,10 @@ class ONCOLOGIA(PDF):
 		for i in range(1, self.line_jumper):
 			prod_string += " " + re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos+i])
 		return prod_string
+
+
+	def discount(self) -> str:
+		return "0.00% (no field given)"
 
 
 	def is_correct_firm(self, pdf_text):

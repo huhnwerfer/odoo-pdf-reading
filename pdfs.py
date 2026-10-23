@@ -35,7 +35,7 @@ class PDFS:
 	def find_company(line_array, pdf_text):
 		subfolder = "scripts"
 		folder = Path(__file__).parent / subfolder
-		for file in folder.glob("*.py"):
+		for file in sorted(folder.glob("*.py")):
 			if file.stem in ("__init__", "__base__"):
 				continue
 			module = importlib.import_module(f"{subfolder}.{file.stem}")
@@ -74,6 +74,7 @@ class PDFS:
 			raise Exception(f"{file_name} failed: dict_array is empty")
 
 		for index, dictionary in enumerate(dict_array, start=1):
+
 			key = "Product Number"
 			value = dictionary[key]
 			if value == "":
@@ -82,14 +83,9 @@ class PDFS:
 			elif not re.fullmatch(r"(\d{2}-\d{5}(-\d{2})?)", value):
 				error_msg += f"{RED_COLOR}{key} is invalid. (expected dd-ddddd(-dd)): line={index}; {value}\n{RESET_COLOR}"
 				pass
-			key = "Product Description"
-			value = dictionary[key]
-			if value == "":
-				error_msg += f"{YELLOW_COLOR}line={index}; {key} is empty\n{RESET_COLOR}"
-				pass
-			elif not re.fullmatch(r"(.{6,})", value):
-				error_msg += f"{YELLOW_COLOR}{key} is short. (at least 6 char): line={index}; {value}\n{RESET_COLOR}"
-				pass
+			elif re.fullmatch(r"(\d{2}-\d{5})", value):
+				error_msg += f"{YELLOW_COLOR}{key} format unclear.: line={index}; {value}\n{RESET_COLOR}"
+
 			key = "Quantity"
 			value = dictionary[key]
 			if value == "":
@@ -99,13 +95,32 @@ class PDFS:
 				error_msg += f"{RED_COLOR}{key} is invalid or to big. (max 99999): line={index}; {value}\n{RESET_COLOR}"
 				pass
 			pass
+
+			key = "Discount"
+			value = dictionary[key]
+			if value == "":
+				error_msg += f"{YELLOW_COLOR}line={index}; {key} is empty\n{RESET_COLOR}"
+				pass
+			elif not re.fullmatch(r"(\d+\.\d+%?)|(0\.00% \(no field given\))", value):
+				error_msg += f"{YELLOW_COLOR}{key} is invalid or wrong formatted. (expected d.dd(%)): line={index}; {value}\n{RESET_COLOR}"
+				pass
+			pass
+
+			key = "Product Description"
+			value = dictionary[key]
+			if value == "":
+				error_msg += f"{YELLOW_COLOR}line={index}; {key} is empty\n{RESET_COLOR}"
+				pass
+			elif not re.fullmatch(r"(.{6,})", value):
+				error_msg += f"{YELLOW_COLOR}{key} is short. (at least 6 char): line={index}; {value}\n{RESET_COLOR}"
+				pass
 		return error_msg + ""
 
 
 	@staticmethod
 	def dict_array_to_csv_array(dict_array) -> list[str]:
 		csv_array = []
-		filled_dict_keys = []
+		filled_dict_keys = ["Product Number", "Quantity", "Discount"]
 		for dictionary in dict_array:
 			for k, v in dictionary.items():
 				if v != "":
