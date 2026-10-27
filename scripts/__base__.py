@@ -1,6 +1,5 @@
 import re
 class PDF:
-	test = None
 	format_lines_until_pattern = None
 	delete_lines_until_pattern = None
 	regex_array = None
