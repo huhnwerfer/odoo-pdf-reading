@@ -12,3 +12,4 @@ from .midt import *
 from .oncologia import *
 from .oslo import *
 from .vib import *
+from .chu import *
