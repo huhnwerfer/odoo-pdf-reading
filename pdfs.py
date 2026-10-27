@@ -70,7 +70,7 @@ class PDFS:
 	@staticmethod
 	def test_dict_array(dict_array, file_name) -> str:
 		error_msg = ""
-		if not dict_array:
+		if dict_array == {}:
 			raise Exception(f"{file_name} failed: dict_array is empty")
 
 		for index, dictionary in enumerate(dict_array, start=1):

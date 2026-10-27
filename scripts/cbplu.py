@@ -12,16 +12,17 @@ class CBPLU(PDF):
 	regex_array = [r"(\d{2}-\d{5}-\d{2}) PLU (.*) (\d*) (\d*) (\d*\.\d*) (\d*\.\d*)", r"(.*)(( *PC)|(ML))( EUR)"]
 
 
+	def write_vars(self):
+		self.prod_des_string = re.sub(self.regex_array[0], r"\2", self.line_array[self.line_array_pos])
+		for i in range(1, self.line_jumper):
+			self.prod_des_string += " " + re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos+i])
+			pass
+
+
+
 	def prod_no(self) -> str:
 		return re.sub(self.regex_array[0], r"\1", self.line_array[self.line_array_pos])
 
-
-	def prod_des(self) -> str:
-		prod_des_str = ""
-		prod_des_str += re.sub(self.regex_array[0], r"\2", self.line_array[self.line_array_pos])
-		for i in range(1, self.line_jumper):
-			prod_des_str += " " + re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos+i])
-		return prod_des_str
 
 
 	def u_o_m(self) -> str:
