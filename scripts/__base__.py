@@ -4,12 +4,21 @@ class PDF:
 	format_lines_until_pattern = None
 	delete_lines_until_pattern = None
 	regex_array = None
+
 	def __init__(self, line_array: list):
 		self.line_array = line_array
 		self.dict_array = []
 		self.line_array_pos = 0
 		self.new_string = {}
 		self.line_jumper = 1
+
+		self.prod_no = ""
+		self.quantity = ""
+		self.discount = ""
+		self.prod_des = ""
+		self.u_o_m = ""
+		self.unit_price = ""
+		self.total = ""
 		pass
 
 
@@ -36,13 +45,14 @@ class PDF:
 	def csv_line(self) -> dict:
 		dict_line = {}
 		self.count_lines()
-		dict_line["Product Number"] = self.prod_no()
-		dict_line["Quantity"] = self.quantity()
-		dict_line["Discount"] = self.discount()
-		dict_line["Product Description"] = self.prod_des()
-		dict_line["U O M"] = self.u_o_m()
-		dict_line["Unit Price"] = self.unit_price()
-		dict_line["Total"] = self.total()
+		self.write_vars()
+		dict_line["Product Number"] = self.prod_no
+		dict_line["Quantity"] = self.quantity
+		dict_line["Discount"] = self.discount
+		dict_line["Product Description"] = self.prod_des
+		dict_line["U O M"] = self.u_o_m
+		dict_line["Unit Price"] = self.unit_price
+		dict_line["Total"] = self.total
 		return dict_line
 
 
@@ -50,6 +60,12 @@ class PDF:
 		self.line_jumper = 1
 		while not (re.search(self.delete_lines_until_pattern, self.line_array[self.line_array_pos + self.line_jumper]) or re.search(self.format_lines_until_pattern, self.line_array[self.line_array_pos + self.line_jumper])):
 			self.line_jumper += 1
+			pass
+		pass
+
+
+	def write_vars(self):
+		raise Exception(f"{self.__class__.__name__}: Function write_vars is not implemented (pls implement prod_no, quantity, discount and prod_des)")
 
 
 	def prod_no(self) -> str:

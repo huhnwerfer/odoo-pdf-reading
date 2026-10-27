@@ -14,36 +14,16 @@ class BACLESSE(PDF):
 	regex_array = [r"\d* .* (\d{2}-\d{5}-\d{0,2}) (.*) \d* (\d*) .* (\d*,\d*) (\d*,\d*)EUR .*", r"(.*)"]
 
 
-	def prod_no(self) -> str:
-		return re.sub(self.regex_array[0], r"\1", self.line_array[self.line_array_pos])
-
-
-	def prod_des(self) -> str:
-		prod_string = ""
-		prod_string += re.sub(self.regex_array[0], r"\2", self.line_array[self.line_array_pos])
+	def write_vars(self):
+		self.prod_no = re.sub(self.regex_array[0], r"\1", self.line_array[self.line_array_pos])
+		self.prod_des = re.sub(self.regex_array[0], r"\2", self.line_array[self.line_array_pos])
 		for i in range(1, self.line_jumper):
-			prod_string += " " + self.line_array[self.line_array_pos+i]
-		return prod_string
-
-
-	def u_o_m(self) -> str:
-		return ""
-
-
-	def quantity(self) -> str:
-		return re.sub(self.regex_array[0], r"\3", self.line_array[self.line_array_pos])
-
-
-	def unit_price(self) -> str:
-		return re.sub(self.regex_array[0], r"\4", self.line_array[self.line_array_pos])
-
-
-	def total(self) -> str:
-		return re.sub(self.regex_array[0], r"\5", self.line_array[self.line_array_pos])
-
-
-	def discount(self) -> str:
-		return "0.00 (no field given)"
+			self.prod_des += " " + self.line_array[self.line_array_pos+i]
+			pass
+		self.quantity = re.sub(self.regex_array[0], r"\3", self.line_array[self.line_array_pos])
+		self.unit_price = re.sub(self.regex_array[0], r"\4", self.line_array[self.line_array_pos])
+		self.total = re.sub(self.regex_array[0], r"\5", self.line_array[self.line_array_pos])
+		self.discount = "0.00 (no field given)"
 
 
 	def is_correct_firm(self, pdf_text):
