@@ -29,8 +29,12 @@ class CHU(PDF):
 		dict_line[self.prod_no_string] = self.get_text(2, 1, self.line_array[self.line_array_pos+self.line_jumper-2])
 		return dict_line
 
+
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"C\.H\.U\. LIMOGES|CHU Limoges", pdf_text)
 
 
-
+	def get_order_id(self, pdf_text) -> str:
+		order_id = re.search(r"N°d'engagement: ?(.*)", pdf_text).group(0)
+		order_id = re.sub(r"N°d'engagement: ?(.*)", r"\1", order_id)
+		return order_id
