@@ -31,3 +31,9 @@ class BACLESSE(PDF):
 
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"Baclesse", pdf_text)
+
+
+	def get_order_id(self, pdf_text) -> str:
+		order_id = re.search(r"N° de la commande : (.*) PLURISELECT", pdf_text).group(0)
+		order_id = re.sub(r"N° de la commande : (.*) PLURISELECT", r"\1", order_id)
+		return order_id
