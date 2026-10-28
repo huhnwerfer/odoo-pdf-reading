@@ -34,3 +34,9 @@ class CBPLU(PDF):
 
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"CBPLU", pdf_text)
+
+
+	def get_order_id(self, pdf_text) -> str:
+		order_id = re.search(r"ORDER NO\. : (.*)", pdf_text).group(0)
+		order_id = re.sub(r"ORDER NO\. : (.*)", r"\1", order_id)
+		return order_id
