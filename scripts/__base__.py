@@ -53,8 +53,10 @@ class PDF:
 		pass
 
 
-	def get_text(self, regex_array_pos: int, capture_group: int, regex_text: str) -> str:
-		return re.sub(self.regex_array[regex_array_pos], fr"\{capture_group}", regex_text)
+	def get_text(self, regex_array_pos: int, capture_group: int, regex_text_or_pos) -> str:
+		if isinstance(regex_text_or_pos, int):
+			return re.sub(self.regex_array[regex_array_pos], fr"\{capture_group}", self.line_array[self.line_array_pos + regex_text_or_pos])
+		return re.sub(self.regex_array[regex_array_pos], fr"\{capture_group}", regex_text_or_pos)
 
 
 	def delete_lines_until_(self):

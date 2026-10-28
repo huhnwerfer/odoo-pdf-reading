@@ -17,15 +17,15 @@ class CBPLU(PDF):
 	def csv_line(self) -> dict:
 		dict_line = {}
 		line_text = self.line_array[self.line_array_pos]
-		dict_line[self.prod_no_string] = self.get_text(0, 1, line_text)
-		dict_line[self.prod_des_string] = self.get_text(0, 2, line_text)
+		dict_line[self.prod_no_string] = self.get_text(0, 1, 0)
+		dict_line[self.prod_des_string] = self.get_text(0, 2, 0)
 		for i in range(1, self.line_jumper):
-			dict_line[self.prod_des_string] += " " + self.get_text(1, 1, self.line_array[self.line_array_pos+i])
+			dict_line[self.prod_des_string] += " " + self.get_text(1, 1, i)
 			pass
-		dict_line[self.u_o_m_string] = self.get_text(0, 3, line_text) + " " + self.get_text(1, 2, self.line_array[self.line_array_pos+1])
-		dict_line[self.quantity_string] = self.get_text(0, 4, line_text)
-		dict_line[self.unit_price_string] = self.get_text(0, 5, line_text)
-		dict_line[self.total_string] = self.get_text(0, 6, line_text)
+		dict_line[self.u_o_m_string] = self.get_text(0, 3, 0) + " " + self.get_text(1, 2, 1)
+		dict_line[self.quantity_string] = self.get_text(0, 4, 0)
+		dict_line[self.unit_price_string] = self.get_text(0, 5, 0)
+		dict_line[self.total_string] = self.get_text(0, 6, 0)
 		dict_line[self.discount_string] = "0.00% (no field given)"
 		return dict_line
 
