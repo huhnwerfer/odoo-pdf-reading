@@ -60,7 +60,7 @@ class PDFS:
 
 
 	@staticmethod
-	def line_array_to_dict_array(company, line_array, file_name) -> list[dict]:
+	def line_array_to_dict_array(company) -> list[dict]:
 		while company.line_array_pos < len(company.line_array):
 			company.delete_lines_until_()
 			company.format_lines_until_()
@@ -152,3 +152,9 @@ class PDFS:
 				pass
 			pass
 		pass
+
+
+	@staticmethod
+	def get_order_id(company: PDF, pdf_text) -> str:
+		order_id = company.get_order_id(pdf_text)
+		return order_id

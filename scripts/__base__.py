@@ -78,3 +78,9 @@ class PDF:
 
 	def is_correct_firm(self, pdf_text):
 		raise Exception(f"In {self.__class__.__name__} function is_correct_firm is not implemented")
+
+
+	def get_order_id(self, pdf_text) -> str:
+		raise Exception(f"In {self.__class__.__name__} function get_order_id is not implemented")
+		order_id = re.sub(r".*(.*)", r"\1", pdf_text)
+		return order_id
