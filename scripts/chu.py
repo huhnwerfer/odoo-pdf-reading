@@ -13,39 +13,21 @@ class CHU(PDF):
 	regex_array = [r"\d+ \d{7}.*\d{7} (\d+).* (\d+,\d+) ?(.*) (\d*) (\d+,\d+).*", r"(.*)", r"(^(\d{6})|(\d{2}-\d{5}(-\d{2})?))"]
 
 
-	def quantity(self) -> str:
-		return re.sub(self.regex_array[0], r"\1", self.line_array[self.line_array_pos])
-
-
-	def unit_price(self) -> str:
-		return re.sub(self.regex_array[0], r"\2", self.line_array[self.line_array_pos])
-
-
-	def discount(self) -> str:
-		discount_string = ""
-		discount_string += re.sub(self.regex_array[0], r"\3", self.line_array[self.line_array_pos])
-		if discount_string == "":
-			return "0.00% (no discount found)"
-		return discount_string
-
-
-	def total(self) -> str:
-		total_string = ""
-		total_string += re.sub(self.regex_array[0], r"\4", self.line_array[self.line_array_pos])
-		total_string += re.sub(self.regex_array[0], r"\5", self.line_array[self.line_array_pos])
-		return total_string
-
-
-	def prod_des(self) -> str:
-		prod_string = ""
+	def csv_line(self) -> dict:
+		dict_line = {}
+		line_text = self.line_array[self.line_array_pos]
+		dict_line[self.quantity_string] = self.get_text(0, 1, line_text)
+		dict_line[self.unit_price_string] = self.get_text(0, 2, line_text)
+		dict_line[self.discount_string] = self.get_text(0, 3, line_text)
+		if dict_line[self.discount_string] == "":
+			dict_line[self.discount_string] = "0.00% (no discount found)"
+		dict_line[self.total_string] = self.get_text(0, 4, line_text) + self.get_text(0, 5, line_text)
+		dict_line[self.prod_des_string] = ""
 		for i in range(1, self.line_jumper-2):
-			prod_string += re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos + i]) + " "
-		return prod_string
-
-
-	def prod_no(self) -> str:
-		return re.sub(self.regex_array[2], r"\1", self.line_array[self.line_array_pos+self.line_jumper-2])
-
+			dict_line[self.prod_des_string] += re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos+i]) + " "
+			pass
+		dict_line[self.prod_no_string] = self.get_text(2, 1, self.line_array[self.line_array_pos+self.line_jumper-2])
+		return dict_line
 
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"C\.H\.U\. LIMOGES|CHU Limoges", pdf_text)
