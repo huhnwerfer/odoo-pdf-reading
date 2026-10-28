@@ -11,7 +11,7 @@ class CBPLU(PDF):
 
 	# 42-50000-03 PLU pluriStrainer Funnel, pluriStrainer accessories 25 1 40.30 40.30
 	# 25pc with the same LOT. PC EUR
-	regex_array = [r"(\d{2}-\d{5}-\d{2}) PLU (.*) (\d*) (\d*) (\d*\.\d*) (\d*\.\d*)", r"(.*)(( *PC)|(ML))( EUR)"]
+	regex_array = [r"(\d{2}-\d{5}-\d{2}) PLU (.*) (\d*) (\d*) (\d*\.\d*) (\d*\.\d*)", r"(.*) ?((PC)|(ML))( EUR)"]
 
 
 	def csv_line(self) -> dict:
@@ -19,6 +19,9 @@ class CBPLU(PDF):
 		line_text = self.line_array[self.line_array_pos]
 		dict_line[self.prod_no_string] = self.get_text(0, 1, line_text)
 		dict_line[self.prod_des_string] = self.get_text(0, 2, line_text)
+		for i in range(1, self.line_jumper):
+			dict_line[self.prod_des_string] += " " + re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos+i])
+			pass
 		dict_line[self.u_o_m_string] = self.get_text(0, 3, line_text) + " " + self.get_text(1, 2, self.line_array[self.line_array_pos+1])
 		dict_line[self.quantity_string] = self.get_text(0, 4, line_text)
 		dict_line[self.unit_price_string] = self.get_text(0, 5, line_text)
