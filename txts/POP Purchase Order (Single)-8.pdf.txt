@@ -1,0 +1,61 @@
+##CFG Purchase Order ## ##COMPANY pluriSelect Life
+##NAME ## ##EMAIL sales@pluriselect.com##
+Science## ##VAR1 0031A## ##VAR2 0000074625##
+##FAX ##
+##VAR3 ##
+Company Registration : 04382252
+Order To:
+pluriSelect Life Science VAT Registration : GB388753981
+Deutscher Platz 5e
+Order No. 0000074625
+04103 Leipzig
+Germany
+Order Date 28/08/2026
+Supplier Account Number 0031A
+Customer PO Number
+purchase order
+Qty Catalogue No. Description Requested Date Unit Price Disc % Total Price
+0 Please may we ask you to ship this on our 0.00 0.00 0.00
+account, FedEx International Priority Express
+service.
+Please note that we will closed on Monday 31st
+August due to Bank Holiday in the UK, therefore
+please ensure to top the shipment up with
+enough dry ice/gels block to account for
+additional day/s in transit.
+5 41-50000-03 pluriStrainer Connector, pluriStainer Accesories 04/09/2026 48.10 0.00 240.50
+1 PAK
+1 42-50000-03 Funnel, pluriStrainer Accesories 1 PAK 04/09/2026 40.30 0.00 40.30
+1 43-10030-50 pluriStrainer Mini Cell Strainer, pore size 30 um 04/09/2026 59.50 0.00 59.50
+1 PAK
+1 43-10030-51 pluriStrainer Mini Cell Strainer, pore size 30 um 07/09/2026 94.50 0.00 94.50
+1 PAK
+10 43-10040-50 pluriStrainer Mini Cell Strainer, pore size 40 um 04/09/2026 59.50 0.00 595.00
+1 PAK
+1 43-10100-50 pluriStrainer Mini Cell Strainer, pore size 100 04/09/2026 59.50 0.00 59.50
+um 1 PAK
+1 43-50005-13 pluriStrainer cell strainer, pore size 5 um 1 PAK 04/09/2026 57.00 0.00 57.00
+2 43-50030-03 pluriStrainer cell strainer, pore size 30 um 1 PAK 27/08/2026 57.00 0.00 114.00
+1 43-50040-50 pluriStrainer cell strainer, pore size 40 um 1 PAK 07/09/2026 38.50 0.00 38.50
+2 43-50100-50 pluriStrainer cell strainer, pore size 100 um 1 04/09/2026 38.50 0.00 77.00
+PAK
+2 43-50200-03 pluriStrainer cell strainer, pore size 200 um 1 04/09/2026 57.00 0.00 114.00
+PAK
+2 43-50500-03 pluriStrainer cell strainer, pore size 500 um 1 04/09/2026 57.00 0.00 114.00
+PAK
+2 43-50750-03 pluriStrainer cell strainer, pore size 750 um 1 04/09/2026 57.00 0.00 114.00
+PAK
+2 43-51000-03 pluriStrainer cell strainer, pore size 1000 um 1 04/09/2026 57.00 0.00 114.00
+PAK
+1 43-57040-51 pluriStrainer cell strainer, pore size 40 um 1 PAK 04/09/2026 45.50 0.00 45.50
+Deliver To
+Cambridge Bioscience Ltd
+2-3 Munro House Sub Total € 1877.30
+Trafalgar Way
+VAT € 0.00
+Bar Hill
+Cambridge
+Order Total € 1877.30
+CB23 8SQ
+Cambridge Bioscience Ltd, 2-3 Munro House, Trafalgar Way, Bar Hill, Cambridge CB23 8SQ
++44(0)1223 316 855 www.bioscience.co.uk sales@bioscience.co.uk

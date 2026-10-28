@@ -1,0 +1,49 @@
+##CFG Purchase Order ## ##COMPANY pluriSelect Life
+##NAME ## ##EMAIL sales@pluriselect.com##
+Science## ##VAR1 0031A## ##VAR2 0000075276##
+##FAX ##
+##VAR3 ##
+Company Registration : 04382252
+Order To:
+pluriSelect Life Science VAT Registration : GB388753981
+Deutscher Platz 5e
+Order No. 0000075276
+04103 Leipzig
+Germany
+Order Date 02/10/2026
+Supplier Account Number 0031A
+Customer PO Number
+purchase order
+Qty Catalogue No. Description Requested Date Unit Price Disc % Total Price
+1 41-50000-03 pluriStrainer Connector, pluriStainer Accesories 08/10/2026 48.10 0.00 48.10
+1 PAK
+1 43-10010-50 pluriStrainer Mini Cell Strainer, pore size 10 um 09/10/2026 59.50 0.00 59.50
+1 PAK
+2 43-10020-50 pluriStrainer Mini Cell Strainer, pore size 20 um 09/10/2026 59.50 0.00 119.00
+1 PAK
+1 43-10040-50 pluriStrainer Mini Cell Strainer, pore size 40 um 09/10/2026 59.50 0.00 59.50
+1 PAK
+5 43-10070-50 pluriStrainer Mini Cell Strainer, pore size 70 um 09/10/2026 59.50 0.00 297.50
+1 PAK
+3 43-50005-13 pluriStrainer cell strainer, pore size 5 um 1 PAK 08/10/2026 57.00 0.00 171.00
+2 43-50010-03 pluriStrainer cell strainer, pore size 10 um 1 PAK 08/10/2026 57.00 0.00 114.00
+2 43-50020-03 pluriStrainer cell strainer, pore size 20 um 1 PAK 08/10/2026 57.00 0.00 114.00
+3 43-50040-51 pluriStrainer cell strainer, pore size 40 um 1 PAK 09/10/2026 45.50 0.00 136.50
+1 43-50300-03 pluriStrainer cell strainer, pore size 300 um 1 09/10/2026 57.00 0.00 57.00
+PAK
+2 43-80020-05 pluriStrainer Maxi Bottle Top cell strainer, pore 09/10/2026 56.25 0.00 112.50
+size 20 um
+5 60-00000-10 PBS, 1X 1 BTL 09/10/2026 6.00 0.00 30.00
+2 60-00010-11 PBS, 10X 1 BTL 08/10/2026 10.20 0.00 20.40
+1 60-00030-11 EDTA Solution, 0.2M in PBS 1 BTL 09/10/2026 27.60 0.00 27.60
+Deliver To
+Cambridge Bioscience Ltd
+2-3 Munro House Sub Total € 1366.60
+Trafalgar Way
+VAT € 0.00
+Bar Hill
+Cambridge
+Order Total € 1366.60
+CB23 8SQ
+Cambridge Bioscience Ltd, 2-3 Munro House, Trafalgar Way, Bar Hill, Cambridge CB23 8SQ
++44(0)1223 316 855 www.bioscience.co.uk sales@bioscience.co.uk

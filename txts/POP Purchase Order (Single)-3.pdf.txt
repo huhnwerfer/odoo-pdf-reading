@@ -1,0 +1,44 @@
+##CFG Purchase Order ## ##COMPANY pluriSelect Life
+##NAME ## ##EMAIL sales@pluriselect.com##
+Science## ##VAR1 0031A## ##VAR2 0000075131##
+##FAX ##
+##VAR3 ##
+Company Registration : 04382252
+Order To:
+pluriSelect Life Science VAT Registration : GB388753981
+Deutscher Platz 5e
+Order No. 0000075131
+04103 Leipzig
+Germany
+Order Date 25/09/2026
+Supplier Account Number 0031A
+Customer PO Number
+purchase order
+Qty Catalogue No. Description Requested Date Unit Price Disc % Total Price
+2 43-10020-51 pluriStrainer Mini Cell Strainer, pore size 20 um 01/10/2026 94.50 0.00 189.00
+1 PAK
+1 43-10030-50 pluriStrainer Mini Cell Strainer, pore size 30 um 01/10/2026 59.50 0.00 59.50
+1 PAK
+3 43-10040-50 pluriStrainer Mini Cell Strainer, pore size 40 um 22/09/2026 59.50 0.00 178.50
+1 PAK
+1 43-10070-50 pluriStrainer Mini Cell Strainer, pore size 70 um 02/10/2026 59.50 0.00 59.50
+1 PAK
+1 43-50070-50 pluriStrainer cell strainer, pore size 70 um 1 PAK 30/09/2026 38.50 0.00 38.50
+2 43-50150-03 pluriStrainer cell strainer, pore size 150 um 1 01/10/2026 57.00 0.00 114.00
+PAK
+1 43-57040-51 pluriStrainer cell strainer, pore size 40 um 1 PAK 02/10/2026 45.50 0.00 45.50
+1 43-71020-51 Syringe Strainer laboratory filter, pore size 20 02/10/2026 68.06 0.00 68.06
+um 1 PAK
+10 44-10050-05 pluriMate II Tubes for density gradient 01/10/2026 36.00 0.00 360.00
+centrifugation, 50 m
+Deliver To
+Cambridge Bioscience Ltd
+2-3 Munro House Sub Total € 1112.56
+Trafalgar Way
+VAT € 0.00
+Bar Hill
+Cambridge
+Order Total € 1112.56
+CB23 8SQ
+Cambridge Bioscience Ltd, 2-3 Munro House, Trafalgar Way, Bar Hill, Cambridge CB23 8SQ
++44(0)1223 316 855 www.bioscience.co.uk sales@bioscience.co.uk

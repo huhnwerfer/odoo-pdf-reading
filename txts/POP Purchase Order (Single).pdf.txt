@@ -1,0 +1,52 @@
+##CFG Purchase Order ## ##COMPANY pluriSelect Life
+##NAME ## ##EMAIL sales@pluriselect.com##
+Science## ##VAR1 0031A## ##VAR2 0000075717##
+##FAX ##
+##VAR3 ##
+Company Registration : 04382252
+Order To:
+pluriSelect Life Science VAT Registration : GB388753981
+Deutscher Platz 5e
+Order No. 0000075717
+04103 Leipzig
+Germany
+Order Date 23/10/2026
+Supplier Account Number 0031A
+Customer PO Number
+purchase order
+Qty Catalogue No. Description Requested Date Unit Price Disc % Total Price
+1 43-10005-50 pluriStrainer Mini Cell Strainer, pore size 5 um 02/11/2026 59.50 0.00 59.50
+1 PAK
+1 43-10010-50 pluriStrainer Mini Cell Strainer, pore size 10 um 30/10/2026 59.50 0.00 59.50
+1 PAK
+2 43-10020-50 pluriStrainer Mini Cell Strainer, pore size 20 um 30/10/2026 59.50 0.00 119.00
+1 PAK
+2 43-10030-51 pluriStrainer Mini Cell Strainer, pore size 30 um 30/10/2026 94.50 0.00 189.00
+1 PAK
+3 43-10040-50 pluriStrainer Mini Cell Strainer, pore size 40 um 30/10/2026 59.50 0.00 178.50
+1 PAK
+1 43-10040-51 pluriStrainer Mini Cell Strainer, pore size 40 um 30/10/2026 94.50 0.00 94.50
+1 PAK
+2 43-10070-50 pluriStrainer Mini Cell Strainer, pore size 70 um 30/10/2026 59.50 0.00 119.00
+1 PAK
+1 43-10070-51 pluriStrainer Mini Cell Strainer, pore size 70 um 30/10/2026 94.50 0.00 94.50
+1 PAK
+1 43-50040-51 pluriStrainer cell strainer, pore size 40 um 1 PAK 30/10/2026 45.50 0.00 45.50
+1 43-50300-03 pluriStrainer cell strainer, pore size 300 um 1 30/10/2026 57.00 0.00 57.00
+PAK
+1 43-50300-50 pluriStrainer cell strainer, pore size 300 um 1 20/10/2026 75.60 0.00 75.60
+PAK
+1 43-51000-03 pluriStrainer cell strainer, pore size 1000 um 1 21/10/2026 57.00 0.00 57.00
+PAK
+6 60-00000-10 PBS, 1X 1 BTL 30/10/2026 6.00 0.00 36.00
+Deliver To
+Cambridge Bioscience Ltd
+2-3 Munro House Sub Total € 1184.60
+Trafalgar Way
+VAT € 0.00
+Bar Hill
+Cambridge
+Order Total € 1184.60
+CB23 8SQ
+Cambridge Bioscience Ltd, 2-3 Munro House, Trafalgar Way, Bar Hill, Cambridge CB23 8SQ
++44(0)1223 316 855 www.bioscience.co.uk sales@bioscience.co.uk

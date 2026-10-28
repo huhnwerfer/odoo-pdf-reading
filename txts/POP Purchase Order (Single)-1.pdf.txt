@@ -1,0 +1,50 @@
+##CFG Purchase Order ## ##COMPANY pluriSelect Life
+##NAME ## ##EMAIL sales@pluriselect.com##
+Science## ##VAR1 0031A## ##VAR2 0000075423##
+##FAX ##
+##VAR3 ##
+Company Registration : 04382252
+Order To:
+pluriSelect Life Science VAT Registration : GB388753981
+Deutscher Platz 5e
+Order No. 0000075423
+04103 Leipzig
+Germany
+Order Date 09/10/2026
+Supplier Account Number 0031A
+Customer PO Number
+purchase order
+Qty Catalogue No. Description Requested Date Unit Price Disc % Total Price
+3 41-50000-03 pluriStrainer Connector, pluriStainer Accesories 16/10/2026 48.10 0.00 144.30
+1 PAK
+1 42-50000-03 Funnel, pluriStrainer Accesories 1 PAK 16/10/2026 40.30 0.00 40.30
+1 43-10005-50 pluriStrainer Mini Cell Strainer, pore size 5 um 16/10/2026 59.50 0.00 59.50
+1 PAK
+8 43-10040-50 pluriStrainer Mini Cell Strainer, pore size 40 um 16/10/2026 59.50 0.00 476.00
+1 PAK
+1 43-50005-13 pluriStrainer cell strainer, pore size 5 um 1 PAK 16/10/2026 57.00 0.00 57.00
+1 43-50005-50 pluriStrainer cell strainer, pore size 5 um 1 PAK 16/10/2026 75.60 0.00 75.60
+1 43-50010-03 pluriStrainer cell strainer, pore size 10 um 1 PAK 16/10/2026 57.00 0.00 57.00
+2 43-50015-03 pluriStrainer cell strainer, pore size 15 um 1 PAK 16/10/2026 57.00 0.00 114.00
+3 43-50020-03 pluriStrainer cell strainer, pore size 20 um 1 PAK 16/10/2026 57.00 0.00 171.00
+2 43-50020-50 pluriStrainer cell strainer, pore size 20 um 1 PAK 16/10/2026 75.60 0.00 151.20
+1 43-50030-03 pluriStrainer cell strainer, pore size 30 um 1 PAK 16/10/2026 57.00 0.00 57.00
+1 43-50030-50 pluriStrainer cell strainer, pore size 30 um 1 PAK 15/10/2026 75.60 0.00 75.60
+2 43-50040-51 pluriStrainer cell strainer, pore size 40 um 1 PAK 16/10/2026 45.50 0.00 91.00
+2 43-50060-03 pluriStrainer cell strainer, pore size 60 um 1 PAK 16/10/2026 57.00 0.00 114.00
+1 43-57040-50 pluriStrainer cell strainer, pore size 40 um 1 PAK 06/10/2026 38.50 0.00 38.50
+2 43-80020-05 pluriStrainer Maxi Bottle Top cell strainer, pore 16/10/2026 56.25 0.00 112.50
+size 20 um
+8 60-00000-10 PBS, 1X 1 BTL 16/10/2026 6.00 0.00 48.00
+2 60-00092-12 PBMC Spin Medium 1 BTL 16/10/2026 36.85 0.00 73.70
+Deliver To
+Cambridge Bioscience Ltd
+2-3 Munro House Sub Total € 1956.20
+Trafalgar Way
+VAT € 0.00
+Bar Hill
+Cambridge
+Order Total € 1956.20
+CB23 8SQ
+Cambridge Bioscience Ltd, 2-3 Munro House, Trafalgar Way, Bar Hill, Cambridge CB23 8SQ
++44(0)1223 316 855 www.bioscience.co.uk sales@bioscience.co.uk
