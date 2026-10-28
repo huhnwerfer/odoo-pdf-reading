@@ -61,6 +61,9 @@ def main(arg_array):
 		if error_msg != "":
 			print(error_msg)
 		csv_array = pdf.dict_array_to_csv_array(dict_array)
+		csv_array[-1] += "\n" # for test purposes
+		csv_array.append("\n") # for test purposes
+		csv_array.append("Order ID: " + order_id) # for test purposes
 		pdf.write_csv_to_file(output_dir, csv_array, file_name)
 		pass
 	return
