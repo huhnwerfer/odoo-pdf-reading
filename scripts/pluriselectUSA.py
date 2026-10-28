@@ -19,9 +19,7 @@ class PLURISELECTUSA(PDF):
 		for i in range(1, self.line_jumper):
 			dict_line[self.prod_des_string] += " " + self.get_text(1, 1, i)
 			pass
-		dict_line[self.quantity_string] = float(self.get_text(0, 3, 0).replace(",", "."))
-		if dict_line[self.quantity_string].is_integer():
-			dict_line[self.quantity_string] = str(int(dict_line[self.quantity_string]))
+		dict_line[self.quantity_string] = self.get_text(0, 3, 0)
 		dict_line[self.u_o_m_string] = self.get_text(0, 4, 0)
 		dict_line[self.unit_price_string] = self.get_text(0, 5, 0)
 		dict_line[self.total_string] = self.get_text(0, 6, 0)
