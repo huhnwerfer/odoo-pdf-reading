@@ -28,3 +28,9 @@ class CAMBRIDGE(PDF):
 
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"Cambridge", pdf_text) is not None
+
+
+	def get_order_id(self, pdf_text) -> str:
+		order_id = re.search(r"Order No\. (.*)", pdf_text).group(0)
+		order_id = re.sub(r"Order No\. (.*)", r"\1", order_id)
+		return order_id
