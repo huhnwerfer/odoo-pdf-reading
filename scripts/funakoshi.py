@@ -29,3 +29,8 @@ class FUNAKOSHI(PDF):
 
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"Funakoshi", pdf_text)
+
+
+	def get_order_id(self, pdf_text) -> str:
+		order_id = re.search(r"No\.\s*(\S+)", pdf_text).group(1)
+		return order_id

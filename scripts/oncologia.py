@@ -33,3 +33,8 @@ class ONCOLOGIA(PDF):
 
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"ONCOLOGIA", pdf_text)
+
+
+	def get_order_id(self, pdf_text) -> str:
+		order_id = re.search(r"Purchasing Order N\. (\S+)", pdf_text).group(1)
+		return order_id

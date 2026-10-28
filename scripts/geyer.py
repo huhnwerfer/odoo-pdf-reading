@@ -35,3 +35,8 @@ class GEYER(PDF):
 
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"Geyer", pdf_text)
+
+
+	def get_order_id(self, pdf_text) -> str:
+		order_id = re.search(r"Bestellung Nr.\s*(\S+)", pdf_text).group(1)
+		return order_id

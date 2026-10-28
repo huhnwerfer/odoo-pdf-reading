@@ -29,3 +29,8 @@ class PLURISELECTUSA(PDF):
 
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"Pluriselect-USA", pdf_text)
+
+
+	def get_order_id(self, pdf_text) -> str:
+		order_id = re.search(r"\d+/\d+/\d+ (\S+)", pdf_text).group(1)
+		return order_id

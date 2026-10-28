@@ -33,12 +33,11 @@ class CENTRE_HOSPITALIER(PDF):
 		return dict_line
 
 
-	def prod_des(self) -> str:
-		prod_string = ""
-		for i in range(1, self.line_jumper):
-			prod_string += " " + re.sub(self.regex_array[1], r"\1", self.line_array[self.line_array_pos + i])
-		return prod_string
-
-
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"CENTRE HOSPITALIER UNIVERSITAIRE", pdf_text)
+
+
+	def get_order_id(self, pdf_text) -> str:
+		order_id = re.search(r"D1 (.*) \d*-\d*-\d* \d*-\d*-\d* \d/ \d", pdf_text).group(0)
+		order_id = re.sub(r"D1 (.*) \d*-\d*-\d* \d*-\d*-\d* \d/ \d", r"\1", order_id)
+		return order_id
