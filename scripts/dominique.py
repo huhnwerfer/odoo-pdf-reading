@@ -35,3 +35,9 @@ class DOMINIQUE(PDF):
 
 	def is_correct_firm(self, pdf_text):
 		return re.search(r"Dominique", pdf_text)
+
+
+	def get_order_id(self, pdf_text) -> str:
+		order_id = re.search(r"\d+/\d+/\d+ (.*) .* \1.*", pdf_text).group(0)
+		order_id = re.sub(r"\d+/\d+/\d+ (.*) .* \1.*", r"\1", order_id)
+		return order_id
